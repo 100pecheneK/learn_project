@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5306a459-5dbc-4b78-be06-a3387ba5ad56" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/todo/src/components/app-header/app-header.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todo/src/components/app-header/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todo/src/components/app/app.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todo/src/components/app/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todo/src/components/app/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todo/src/components/filter-panel/filter-panel.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todo/src/components/filter-panel/filter-panel.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todo/src/components/filter-panel/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todo/src/components/item-add-form/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todo/src/components/item-add-form/item-add-form.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todo/src/components/item-add-form/item-add-form.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todo/src/components/search-panel/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todo/src/components/search-panel/search-panel.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todo/src/components/search-panel/search-panel.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todo/src/components/todo-list-item/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todo/src/components/todo-list-item/todo-list-item.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todo/src/components/todo-list-item/todo-list-item.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todo/src/components/todo-list/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todo/src/components/todo-list/todo-list.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todo/src/components/todo-list/todo-list.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todo/src/components/todo-widget/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todo/src/components/todo-widget/todo-widget.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/todo/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/todo/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo/public/logo192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo/public/logo512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/todo/public/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo/public/robots.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo/src/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo/src/App.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo/src/App.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo/src/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/todo/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo/src/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo/src/serviceWorker.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo/src/setupTests.js" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="todo" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/todo" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectId" id="1V4ZSOLDEooVixqPjoQ033KdHJl" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/todo/src/components" />
+      <recent name="$PROJECT_DIR$/todo/src" />
+      <recent name="$PROJECT_DIR$/todo/src/components/app/app" />
+      <recent name="$PROJECT_DIR$/todo/src/components/app" />
+      <recent name="$PROJECT_DIR$/todo/src/components/todo-list-item" />
+    </key>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5306a459-5dbc-4b78-be06-a3387ba5ad56" name="Default Changelist" comment="" />
+      <created>1576514326656</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1576514326656</updated>
+      <workItem from="1576514330050" duration="9028000" />
+      <workItem from="1576563762507" duration="1000" />
+      <workItem from="1576571376716" duration="60000" />
+      <workItem from="1576573606758" duration="6756000" />
+      <workItem from="1576645815764" duration="8025000" />
+      <workItem from="1576667745802" duration="6797000" />
+      <workItem from="1576746703447" duration="2121000" />
+      <workItem from="1576827003228" duration="8035000" />
+      <workItem from="1576857991589" duration="56000" />
+      <workItem from="1576905819026" duration="4000" />
+      <workItem from="1577032348268" duration="247000" />
+      <workItem from="1577181434392" duration="374000" />
+      <workItem from="1579603475516" duration="609000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="237" y="91" key="SettingsEditor" timestamp="1576690145401">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="237" y="91" key="SettingsEditor/0.0.1440.900/1440.-180.1920.1080@0.0.1440.900" timestamp="1576690145401" />
+    <state x="381" y="69" width="678" height="762" key="find.popup" timestamp="1576574171930">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="381" y="69" width="678" height="762" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1576574171930" />
+    <state x="385" y="179" width="670" height="721" key="search.everywhere.popup" timestamp="1576687561747">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="385" y="168" width="670" height="676" key="search.everywhere.popup/0.0.1440.844/1440.-180.1920.1080@0.0.1440.844" timestamp="1576514500468" />
+    <state x="385" y="168" width="670" height="676" key="search.everywhere.popup/0.0.1440.844@0.0.1440.844" timestamp="1576653794309" />
+    <state x="385" y="179" width="670" height="721" key="search.everywhere.popup/0.0.1440.900/1440.-180.1920.1080@0.0.1440.900" timestamp="1576687561747" />
+    <state x="450" y="362" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1576747156406">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="450" y="362" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1440.900@0.0.1440.900" timestamp="1576747156406" />
+  </component>
+</project>

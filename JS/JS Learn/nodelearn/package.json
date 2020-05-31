@@ -1,0 +1,23 @@
+{
+  "name": "nodelearn",
+  "version": "1.0.0",
+  "description": "Node Learn",
+  "main": "demo/chalk.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "node",
+    "nodejs"
+  ],
+  "author": "Misha <mistermihail23@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  }
+}

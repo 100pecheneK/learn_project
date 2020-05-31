@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a3d28a92-ee94-445e-91c8-888b50624e2b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/redux-sandbox/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/redux-sandbox/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/redux-sandbox/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/redux-sandbox/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/redux-sandbox/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/redux-sandbox/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/redux-sandbox/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/redux-sandbox/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/redux-sandbox/public/logo192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/redux-sandbox/public/logo512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/redux-sandbox/public/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/redux-sandbox/public/robots.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/redux-sandbox/src/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/redux-sandbox/src/App.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/redux-sandbox/src/App.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/redux-sandbox/src/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/redux-sandbox/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/redux-sandbox/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/redux-sandbox/src/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/redux-sandbox/src/serviceWorker.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/redux-sandbox/src/setupTests.js" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="reduxapp" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/redux-sandbox" />
+  </component>
+  <component name="ProjectId" id="1XfDBPMoauqOYDH3Cz6RiLa3KB0" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.file-colors" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+  </component>
+  <component name="RunManager">
+    <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/redux-sandbox/package.json" />
+      <command value="start" />
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a3d28a92-ee94-445e-91c8-888b50624e2b" name="Default Changelist" comment="" />
+      <created>1581428118435</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1581428118435</updated>
+      <workItem from="1581428121499" duration="6870000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="184" y="111" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1581428226397">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="184" y="111" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900/1440.-180.1920.1080@0.0.1440.900" timestamp="1581428226397" />
+    <state x="415" y="139" key="#start" timestamp="1581428235365">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="415" y="139" key="#start/0.0.1440.900/1440.-180.1920.1080@0.0.1440.900" timestamp="1581428235365" />
+    <state width="1419" height="209" key="GridCell.Tab.0.bottom" timestamp="1581438124208">
+      <screen x="0" y="0" width="1440" height="844" />
+    </state>
+    <state width="1419" height="209" key="GridCell.Tab.0.bottom/0.0.1440.844/1440.-180.1920.1080@0.0.1440.844" timestamp="1581438124208" />
+    <state width="1419" height="209" key="GridCell.Tab.0.bottom/0.0.1440.900/1440.-180.1920.1080@0.0.1440.900" timestamp="1581428853850" />
+    <state width="1419" height="209" key="GridCell.Tab.0.center" timestamp="1581438124204">
+      <screen x="0" y="0" width="1440" height="844" />
+    </state>
+    <state width="1419" height="209" key="GridCell.Tab.0.center/0.0.1440.844/1440.-180.1920.1080@0.0.1440.844" timestamp="1581438124204" />
+    <state width="1419" height="209" key="GridCell.Tab.0.center/0.0.1440.900/1440.-180.1920.1080@0.0.1440.900" timestamp="1581428853849" />
+    <state width="1419" height="209" key="GridCell.Tab.0.left" timestamp="1581438124202">
+      <screen x="0" y="0" width="1440" height="844" />
+    </state>
+    <state width="1419" height="209" key="GridCell.Tab.0.left/0.0.1440.844/1440.-180.1920.1080@0.0.1440.844" timestamp="1581438124202" />
+    <state width="1419" height="209" key="GridCell.Tab.0.left/0.0.1440.900/1440.-180.1920.1080@0.0.1440.900" timestamp="1581428853848" />
+    <state width="1419" height="209" key="GridCell.Tab.0.right" timestamp="1581438124207">
+      <screen x="0" y="0" width="1440" height="844" />
+    </state>
+    <state width="1419" height="209" key="GridCell.Tab.0.right/0.0.1440.844/1440.-180.1920.1080@0.0.1440.844" timestamp="1581438124207" />
+    <state width="1419" height="209" key="GridCell.Tab.0.right/0.0.1440.900/1440.-180.1920.1080@0.0.1440.900" timestamp="1581428853849" />
+  </component>
+</project>

@@ -1,0 +1,28 @@
+section {
+    padding: 80px 0 20px 0;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+h3 {
+    font-size: 24px;
+}
+.shadow {
+    box-shadow: 0 5px 30px rgba(0,0,0, .4);
+}
+.carousel {
+    margin-top: 40px;
+    box-shadow: 0 5px 30px rgba(0,0,0, .4);
+}
+footer {
+    background-color: #212121;
+    height: 100px;
+    padding: 20px;
+    color: darkred;
+}
