@@ -1,9 +1,9 @@
-// const person = {
-//   surname: 'Старк',
-//   knows: function (what, name) {
-//     console.log(`Ты ${what} знаешь, ${name} ${this.surname}`)
-//   }
-// }
+const person = {
+  surname: 'Старк',
+  knows: function (what, name) {
+    console.log(`Ты ${what} знаешь, ${name} ${this.surname}`)
+  },
+}
 //
 // const john = {
 //   surname: 'Сноу'
@@ -57,13 +57,11 @@
 
 function Cat(color) {
   this.color = color
-  console.log('This', this);
-  (() => console.log('Arrow this', this))();
-  (function () {
+  console.log('This', this)
+  ;(() => console.log('Arrow this', this))()
+  ;(function () {
     console.log('Fanc this', this)
-  }).call(this)
+  }.call(this))
 }
-
-
 
 new Cat('red')
