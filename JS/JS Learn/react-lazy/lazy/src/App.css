@@ -1,0 +1,15 @@
+.img-container {
+    width: 100%;
+    padding-bottom: 56.25%;
+    position: relative;
+    background: #fff;
+}
+
+.img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+}
+
