@@ -1,0 +1,159 @@
+@import "../../styles/variables";
+
+.message {
+  $self: &;
+  display: flex;
+  margin-bottom: 1.5em;
+
+  &__content {
+    max-width: 400px;
+    display: flex;
+    position: relative;
+  }
+
+  &__avatar {
+    display: flex;
+    flex-direction: column-reverse;
+
+    img {
+      border-radius: 50px;
+      width: 33px;
+      height: 33px;
+      margin-right: 1.2em;
+      margin-bottom: 0.8em;
+    }
+  }
+
+  &__bubble {
+    background-color: $blue;
+    box-shadow: 0 5px 5px rgba(54, 116, 255, 0.2);
+    border-radius: 12px 12px 12px 0;
+    padding: 1em;
+    margin-bottom: 0.5em;
+  }
+
+  &__date {
+    font-size: 12px;
+    opacity: 0.5;
+  }
+
+  &__text {
+    color: #fff;
+    line-height: 20px;
+  }
+
+  &__attachments {
+    display: flex;
+
+    &-item {
+      img {
+        width: 45px;
+        height: 45px;
+        border-radius: 8px;
+        margin-right: 0.4em;
+        margin-bottom: 0.5em;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__icon--readed {
+    position: absolute;
+    bottom: 1.5em;
+    left: -1.5em;
+
+    &--no {
+      left: -1.2em;
+    }
+  }
+
+  &--isme {
+    display: flex;
+    flex-direction: row-reverse;
+
+    #{$self}__content {
+      flex-direction: row-reverse;
+    }
+
+    #{$self}__avatar {
+      img {
+        margin-right: 0;
+        margin-left: 1.2em;
+      }
+    }
+
+    #{$self}__content {
+      flex-direction: row-reverse;
+    }
+
+    #{$self}__info {
+      text-align: right;
+    }
+
+    #{$self}__bubble {
+      background-color: #fff;
+      border: 1px solid #ececec;
+      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+      border-radius: 12px 12px 0 12px;
+
+      #{$self}__text {
+        color: $black;
+      }
+    }
+  }
+
+  &--is-typing {
+    #{$self}__bubble {
+      background-color: $message-typing-blue;
+      box-shadow: 0 5px 5px rgba(54, 116, 255, 0.05);
+      padding: 1em 1.5em;
+    }
+  }
+
+  &--image {
+    #{$self}__attachments {
+      &-item {
+        img {
+          width: 150px;
+          height: 150px;
+        }
+      }
+    }
+  }
+
+  &__typing {
+    span {
+      height: 8px;
+      width: 8px;
+      border-radius: 50%;
+      background: $message-typing-circle;
+      display: inline-block;
+      margin-right: 8px;
+      animation: 0.8s typingAnimation infinite ease-out 0.1s;
+
+      &:nth-of-type(2) {
+        animation: 0.8s typingAnimation infinite ease-out 0.2s;
+      }
+
+      &:nth-of-type(3) {
+        animation: 0.8s typingAnimation infinite ease-out 0.3s;
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+@keyframes typingAnimation {
+  from {
+    opacity: 0.2;
+    transform: translateY(0px);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(-1.5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-1px);
+  }
+}
