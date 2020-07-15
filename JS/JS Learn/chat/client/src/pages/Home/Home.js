@@ -1,48 +1,38 @@
 import React from 'react'
 import './Home.scss'
-import {Message, DialogItem} from '../../components'
+import {Dialogs, Message} from '../../components'
 
 const Home = () => {
   return (
     <section className={'home'}>
-      <div className="dialogs">
-        <DialogItem
-          user={{
-            fullname: 'Михаил Притыкин',
-            isOnline: true
-          }}
-          unreaded={31}
-        />
-        <DialogItem
-          user={{
-            fullname: 'Михаил Притыкин',
-            isOnline: false
-          }}
-          unreaded={3}
-        />
-        <DialogItem
-          user={{
-            fullname: 'Михаил Притыкин',
-            isOnline: true
-          }}
-          // unreaded={3}
-        />
-      </div>
-      {/*<Dialogs*/}
-      {/*  items={[*/}
-      {/*    {*/}
-      {/*      user: {*/}
-      {/*        fullname: 'Притыкин Михаил',*/}
-      {/*        avatar: null*/}
-      {/*      },*/}
-      {/*      message: {*/}
-      {/*        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus cumque et non placeat reprehenderit sequi. Ea in recusandae voluptate!',*/}
-      {/*        isReaded: false,*/}
-      {/*        created_at: new Date()*/}
-      {/*      }*/}
-      {/*    }*/}
-      {/*  ]}*/}
-      {/*/>*/}
+
+      <Dialogs
+        userId={1}
+        items={[
+          {
+            _id: 1,
+            text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus cumque et non placeat reprehenderit sequi. Ea in recusandae voluptate!',
+            isReaded: false,
+            created_at: new Date('Wed Jul 14 2020 10:01:47'),
+            user: {
+              _id: '125',
+              fullname: 'Притыкин Михаил',
+              avatar: null
+            },
+          },
+          {
+            _id: 2,
+            text: 'A accusamus cumque et non placeat reprehenderit sequi. Ea in recusandae voluptate!',
+            isReaded: false,
+            created_at: new Date('Wed Jul 15 2020 10:01:48'),
+            user: {
+              _id: '123',
+              fullname: 'анил Радостев',
+              avatar: null
+            },
+          }
+        ]}
+      />
 
       {/*<Message*/}
       {/*  avatar={'https://sun9-8.userapi.com/wWZ0TSfUiBdXHPeApKu9JQP7yLKu7I-arPoeFw/PKYTGoe19wk.jpg?ava=1'}*/}
@@ -91,6 +81,11 @@ const Home = () => {
       {/*  avatar={'https://sun9-8.userapi.com/wWZ0TSfUiBdXHPeApKu9JQP7yLKu7I-arPoeFw/PKYTGoe19wk.jpg?ava=1'}*/}
       {/*  isTyping={true}*/}
       {/*/>*/}
+      <Message
+        avatar={'https://sun9-8.userapi.com/wWZ0TSfUiBdXHPeApKu9JQP7yLKu7I-arPoeFw/PKYTGoe19wk.jpg?ava=1'}
+        date={new Date('Tue Jul 14 2020 04:51:14 GMT+0500 (Екатеринбург, стандартное время)')}
+        audio='https://notificationsounds.com/soundfiles/7750ca3559e5b8e1f44210283368fc16/file-sounds-1159-promise.mp3'
+      />
 
     </section>
   )
