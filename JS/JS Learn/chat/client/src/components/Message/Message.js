@@ -34,7 +34,7 @@ const MessageAudio = ({audio}) => {
         setProgress((audioElem.current.currentTime / duration) * 100)
       }
     )
-  }, [audioElem.current])
+  }, [])
 
   const togglePlay = () => {
     if (isPlaying) {
@@ -96,8 +96,8 @@ const Message = ({avatar, user, text, date, audio, isMe, isReaded, attachments, 
           </div>}
           {attachments && (
             <div className="message__attachments">
-              {attachments.map(attachment => (
-                <div className="message__attachments-item">
+              {attachments.map((attachment, index) => (
+                <div key={index} className="message__attachments-item">
                   <img src={attachment.url} alt={attachment.filename}/>
                 </div>
               ))}

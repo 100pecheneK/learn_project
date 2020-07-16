@@ -1,5 +1,4 @@
 import React from 'react'
-import './DialogItem.scss'
 import classNames from 'classnames'
 import format from 'date-fns/format'
 import isToday from 'date-fns/isToday'
@@ -7,13 +6,14 @@ import {IconReaded, Avatar} from '../'
 
 
 const getMessageTime = created_at => {
-  if (isToday(created_at)) {
+  const date = new Date(created_at)
+  if (isToday(date)) {
     return format(
-      created_at, 'HH:mm'
+      date, 'HH:mm'
     )
   } else {
     return format(
-      created_at, 'dd.MM.yyyy'
+      date, 'dd.MM.yyyy'
     )
   }
 }

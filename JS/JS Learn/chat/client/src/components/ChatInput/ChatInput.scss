@@ -1,0 +1,36 @@
+.chat-input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1.45em;
+  position: relative;
+
+  &__smile-btn {
+    background-color: #fff;
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    button {
+      margin-left: 1em;
+    }
+  }
+
+  input {
+    height: 40px !important;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}
