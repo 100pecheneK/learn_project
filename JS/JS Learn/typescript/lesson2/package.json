@@ -1,0 +1,13 @@
+{
+  "name": "lesson2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "tsc -w",
+    "compile": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^3.9.7"
+  }
+}
