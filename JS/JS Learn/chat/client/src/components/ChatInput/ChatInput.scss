@@ -5,6 +5,14 @@
   margin: 1.45em;
   position: relative;
 
+  &__emoji-picker {
+    .emoji-mart {
+      position: absolute;
+      bottom: 4em;
+      z-index: 1;
+    }
+  }
+
   &__smile-btn {
     background-color: #fff;
     padding: 1em;
@@ -13,9 +21,6 @@
     align-items: center;
   }
 
-
-
-
   &__actions {
     display: flex;
     justify-content: space-between;
@@ -23,6 +28,24 @@
 
     button {
       margin-left: 1em;
+    }
+
+    &-upload-btn {
+      ::-webkit-file-upload-button {
+        cursor: pointer;
+      }
+
+      &:hover {
+        cursor: pointer !important;
+
+        input, span, svg {
+          cursor: pointer !important;
+        }
+
+        button.ant-btn-link {
+          opacity: 1;
+        }
+      }
     }
   }
 

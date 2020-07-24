@@ -2,11 +2,12 @@ import React, {useEffect, useRef, useState} from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import './Message.scss'
-import {Time, IconReaded} from '../'
+import {Time, IconReaded, Avatar} from '../'
 import waveSvg from '../../assets/img/wave.svg'
 import playSvg from '../../assets/img/play.svg'
 import pauseSvg from '../../assets/img/pause.svg'
 import {convertToTime} from '../../utils/helpers'
+
 
 const MessageAudio = ({audio}) => {
   const [isPlaying, setIsPlaying] = useState(false)
@@ -69,7 +70,7 @@ const MessageAudio = ({audio}) => {
   )
 }
 
-const Message = ({avatar, user, text, date, audio, isMe, isReaded, attachments, isTyping}) => {
+const Message = ({user, text, created_at, audio, isMe, isReaded, attachments, isTyping}) => {
   return (
     <div className={classNames('message', {
       'message--isme': isMe,
@@ -80,7 +81,7 @@ const Message = ({avatar, user, text, date, audio, isMe, isReaded, attachments, 
       <div className={'message__content'}>
         <IconReaded isMe={isMe} isReaded={isReaded}/>
         <div className="message__avatar">
-          <img src={avatar} alt={`Avatar ${user.fullname}`}/>
+          <Avatar user={user}/>
         </div>
         <div className="message__info">
           {(text || audio || isTyping) && <div className="message__bubble">
@@ -103,8 +104,8 @@ const Message = ({avatar, user, text, date, audio, isMe, isReaded, attachments, 
               ))}
             </div>
           )}
-          {date && <span className="message__date">
-          <Time date={date}/>
+          {created_at && <span className="message__date">
+          <Time date={created_at}/>
         </span>}
 
         </div>
@@ -121,7 +122,7 @@ Message.defaultProps = {
 Message.propTypes = {
   avatar: PropTypes.string,
   text: PropTypes.string,
-  date: PropTypes.object,
+  created_at: PropTypes.string,
   user: PropTypes.object,
   attachments: PropTypes.array,
   isTyping: PropTypes.bool,

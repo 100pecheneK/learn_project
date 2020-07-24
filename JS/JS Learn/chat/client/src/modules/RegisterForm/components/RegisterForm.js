@@ -75,6 +75,7 @@ const RegisterForm = props => {
             <Form.Item
               validateStatus={validateField('password2', touched, errors)}
               hasFeedback
+              help={touched.password2 && errors.password2}
             >
               <Input
                 prefix={<LockOutlined className="site-form-item-icon"/>}

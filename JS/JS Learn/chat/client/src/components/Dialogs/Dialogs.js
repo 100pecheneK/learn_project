@@ -2,10 +2,12 @@ import React from 'react'
 import './Dialogs.scss'
 import {DialogItem} from '../'
 import orderBy from 'lodash/orderBy'
-import {TeamOutlined, FormOutlined, EllipsisOutlined, SmileOutlined} from '@ant-design/icons'
-import {Button, Empty, Input} from 'antd'
+import {TeamOutlined, FormOutlined} from '@ant-design/icons'
+import {Button, Empty, Input, Spin} from 'antd'
+import classNames from 'classnames'
 
-const Dialogs = ({items, userId, onSearch, inputValue}) => (
+
+const Dialogs = ({loading, items, userId, onSearch, currentDialogId, inputValue, onSelectDialog}) => (
   <>
     <div className="chat__sidebar-header">
       <div>
@@ -23,18 +25,22 @@ const Dialogs = ({items, userId, onSearch, inputValue}) => (
       />
     </div>
     <div className="chat__sidebar-dialogs">
-      <div className="dialogs">
-        {items.length ? orderBy(
+      <div className={classNames("dialogs", {'dialogs--loading': loading})}>
+        {loading ? <Spin tip="Загрузка..."/> : items.length ? orderBy(
           items,
           ['created_at'],
           ['desc']
-        ).map(item => (
-          <DialogItem
-            key={item._id}
-            isMe={item.user._id === userId}
-            {...item}
-          />
-        )) : <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={'Пусто'}/>}
+        ).map(item => {
+          return (
+            <DialogItem
+              onSelect={onSelectDialog}
+              key={item._id}
+              isMe={item.user._id === userId}
+              {...item}
+              currentDialogId={currentDialogId}
+            />
+          )
+        }) : <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={'Пусто'}/>}
       </div>
     </div>
   </>

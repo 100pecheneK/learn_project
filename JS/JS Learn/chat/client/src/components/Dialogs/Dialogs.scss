@@ -2,11 +2,29 @@
 
 .dialogs {
   width: 300px;
+  height: 100%;
+  overflow: auto;
+
+  &--loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
   &__item {
-    display: flex;
-    margin-bottom: 1.5em;
     $item: &;
+    padding: 0.8em 1.45em;
+    margin-bottom: 0;
+    display: flex;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #ebf0f2;
+    }
+
+    &--selected, &--selected:hover {
+      background-color: #e4ebee;
+    }
 
     &-avatar {
       position: relative;

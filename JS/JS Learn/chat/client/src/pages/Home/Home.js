@@ -1,27 +1,25 @@
 import React from 'react'
 import './Home.scss'
-import {Messages, Status, ChatInput} from '../../components'
-import {Dialogs} from '../../containers'
-import {TeamOutlined, FormOutlined, EllipsisOutlined, SmileOutlined} from '@ant-design/icons'
-import {Button, Input} from 'antd'
+import {Status, ChatInput} from '../../components'
+import {Dialogs, Messages} from '../../containers'
+import {EllipsisOutlined} from '@ant-design/icons'
+import {Button} from 'antd'
 
-import dialogsJson from './dialogs.json'
 
 const Home = () => {
   return (
     <section className={'home'}>
       <div className="chat">
         <div className="chat__sidebar">
-            <Dialogs
-              userId={1}
-              items={dialogsJson}
-            />
+          <Dialogs
+            userId={1}
+          />
         </div>
         <div className="chat__dialog">
           <div className="chat__dialog-header">
             <div/>
             <div className="chat__dialog-header-center">
-              <b className="chat__dialog-header-username">Притыкин Михаил</b>
+              <b className="chat__dialog-header-username">Данил Радостев</b>
               <div className="chat__dialog-header-status">
                 <Status online={true}/>
               </div>
