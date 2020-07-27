@@ -1,33 +1,46 @@
 import express from 'express'
-import {MessageModel, UserModel} from '../models'
+import {DialogModel, MessageModel, UserModel} from '../models'
+import io from 'socket.io'
 
 
 class MessageController {
-  static async index(req: express.Request, res: express.Response) {
+  io: io.Server
+
+  constructor(io: io.Server) {
+    this.io = io
+  }
+
+  index = async (req: express.Request, res: express.Response) => {
     const messages = await MessageModel
       .find({dialog: req.params.dialogId})
       .populate('dialog')
     res.json(messages)
   }
 
-  static async create(req: express.Request, res: express.Response) {
+  create = async (req: any, res: express.Response) => {
     try {
       const postData = {
         text: req.body.text,
         dialog: req.body.dialog,
-        user: req.body.user
+        user: req.user.user._id
       }
-      const dialogs = new MessageModel(postData)
-      await dialogs.save()
+      const message = new MessageModel(postData)
+      await message.save()
+      const msg = await MessageModel.findById(message.id).populate('dialog')
 
+      const dialog = await DialogModel.findById(postData.dialog)
+      if (!dialog) {
+        return res.status(404).json({message: 'Not found'})
+      }
 
-      res.json(dialogs)
+      this.io.emit('SERVER:NEW_MESSAGE', msg)
+      res.json(msg)
     } catch (e) {
       res.status(500).send(e)
     }
   }
 
-  static async delete(req: express.Request, res: express.Response) {
+  delete = async (req: express.Request, res: express.Response) => {
     await MessageModel.findOneAndRemove({_id: req.params.id})
 
     res.json({message: 'Message deleted'})

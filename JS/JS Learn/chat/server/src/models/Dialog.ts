@@ -5,7 +5,7 @@ import validator from "validator"
 export interface IDialog extends Document {
   partner: string,
   author: string,
-  lastMessage: string,
+  lastMessage?: string,
 }
 
 const DialogSchema = new Schema({

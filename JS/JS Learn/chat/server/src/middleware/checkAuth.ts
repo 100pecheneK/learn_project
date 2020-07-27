@@ -4,22 +4,23 @@ import {IUser} from "../models/User"
 
 
 interface IRequestCustom extends express.Request {
-  user?: IUser,
-  headers: {
-    token?: string
-  }
+  user?: any,
+  headers: any
 }
 
 export default (req: IRequestCustom, res: express.Response, next: express.NextFunction) => {
+  if (req.path === '/user/login' || req.path === '/user/registration') {
+    return next()
+  }
+
   const token = req.headers.token
 
   verifyJWTToken(token)
-    .then((user: IUser) => {
+    .then((user: any) => {
       req.user = user
       next()
     })
     .catch(() => {
-      res.status(403).json({message: 'Forbidden'})
+      return res.status(403).json({message: 'Forbidden'})
     })
-
 }
