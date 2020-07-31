@@ -39,13 +39,13 @@ class UserController {
 
     const user = await UserModel.findOne({email: postData.email})
     if (!user) {
-      return res.status(404).json({message: 'Bad email'})
+      return res.status(403).json({message: 'Bad email'})
     }
     if (user.password === postData.password) {
       const token = createJWTToken(user)
       return res.json({token})
     }
-    return res.status(404).json({message: 'Bad data'})
+    return res.status(403).json({message: 'Bad password'})
   }
 
   create = async (req: express.Request, res: express.Response) => {

@@ -10,13 +10,14 @@ export default ({isAuth, values, errors}) => {
     password: value => {
       if (!value) {
         errors.password = 'Введите пароль'
-      } else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/.test(value)) {
-        errors.password = isAuth ? 'Неверный пароль' : 'Слишком лёгкий пароль'
       }
     },
     password2: value => {
       if (!value) {
         errors.password2 = 'Повторите пароль'
+      }
+      if (values.password && values.password !== values.password2) {
+        errors.password2 = 'Пароли не совпадают'
       }
     }
   }

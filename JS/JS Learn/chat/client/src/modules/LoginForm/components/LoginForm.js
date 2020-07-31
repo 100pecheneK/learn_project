@@ -5,13 +5,16 @@ import {Button, Block} from '../../../components'
 import {Link} from 'react-router-dom'
 import {validateField} from '../../../utils/helpers'
 
+
 const LoginForm = props => {
   const {
     touched,
     errors,
     handleChange,
     handleBlur,
-    handleSubmit
+    handleSubmit,
+    isSubmitting,
+    status
   } = props
 
   return (
@@ -62,7 +65,8 @@ const LoginForm = props => {
             />
           </Form.Item>
           <Form.Item>
-            <Button type="primary" htmlType="submit" className="login-form-button" size={'large'}>
+            <Button disabled={isSubmitting} type="primary" htmlType="submit"
+                    className="login-form-button" size={'large'}>
               Войти в аккаунт
             </Button>
           </Form.Item>

@@ -5,6 +5,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/bcrypt": "^3.0.0",
+    "@types/cors": "^2.8.6",
     "@types/express": "^4.17.7",
     "@types/jsonwebtoken": "^8.5.0",
     "@types/lodash": "^4.14.158",
@@ -16,6 +17,9 @@
     "typescript": "^3.9.7"
   },
   "scripts": {
+    "start": "node dist/app.js",
+    "devserver": "nodemon src/server.ts",
+    "build": "tsc -p .",
     "server": "concurrently -k \"tsc -w\" \"nodemon ./dist/server.js\""
   },
   "dependencies": {

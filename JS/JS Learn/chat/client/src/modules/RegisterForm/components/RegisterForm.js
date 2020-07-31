@@ -5,6 +5,7 @@ import {Button, Block} from '../../../components'
 import {Link} from 'react-router-dom'
 import {validateField} from '../../../utils/helpers'
 
+
 const success = false
 const RegisterForm = props => {
   const {
@@ -81,6 +82,9 @@ const RegisterForm = props => {
                 prefix={<LockOutlined className="site-form-item-icon"/>}
                 placeholder="Повторите пароль"
                 size={'large'}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                id={'password2'}
                 type="password"
               />
             </Form.Item>

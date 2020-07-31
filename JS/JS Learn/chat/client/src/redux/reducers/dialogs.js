@@ -19,6 +19,12 @@ export default (state = initialState, {type, payload}) => {
         ...state,
         currentDialogId: payload
       }
+    case 'DIALOGS:ERROR':
+      return {
+        ...state,
+        error: true,
+        loading: false
+      }
     default:
       return state
   }

@@ -3,12 +3,14 @@ import bodyParser from 'body-parser'
 import {checkAuth, updateLastSeen} from '../middleware'
 import express from "express"
 import io from 'socket.io'
+import cors from 'cors'
 
 
 export default (app: express.Application, io: io.Server) => {
   const userController = new UserController(io)
   const dialogController = new DialogController(io)
   const messageController = new MessageController(io)
+  app.use(cors())
   app.use(bodyParser.json())
   app.use(updateLastSeen)
   app.use(checkAuth)

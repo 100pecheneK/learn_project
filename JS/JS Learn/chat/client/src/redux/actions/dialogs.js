@@ -6,6 +6,9 @@ const actions = {
     type: 'DIALOGS:SET_ITEMS',
     payload: items
   }),
+  setError: () => ({
+    type: 'DIALOGS:ERROR'
+  }),
   setCurrentDialogId: id => ({
     type: 'DIALOGS:SET_CURRENT_DIALOG_ID',
     payload: id
@@ -15,7 +18,7 @@ const actions = {
       const res = await dialogsApi.getAll()
       dispatch(actions.setDialogs(res.data))
     } catch (e) {
-
+      dispatch(actions.setError())
     }
   }
 }
