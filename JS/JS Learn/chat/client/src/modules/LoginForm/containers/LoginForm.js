@@ -1,10 +1,13 @@
 import {withFormik} from 'formik'
+import {connect} from 'react-redux'
+
 import LoginForm from '../components/LoginForm'
 import validateForm from '../../../utils/validate'
-import {axios} from '../../../core'
+import {openNotification} from '../../../utils/helpers'
+import {userActions} from '../../../redux/actions'
 
 
-export default withFormik({
+const LoginFormContainer = withFormik({
   enableReinitialize: true,
   mapPropsToValues: () => ({
     email: '',
@@ -18,16 +21,29 @@ export default withFormik({
     return errors
   },
 
-  handleSubmit: (values, {setSubmitting, setStatus}) => {
-    return axios.post('/user/login', values).then(({data}) => {
-      console.log(data)
+  handleSubmit: (values, {setSubmitting, props: {fetchUserLogin, history}}) => {
+
+    fetchUserLogin(values).then(() => {
+      openNotification({
+        title: 'Добро пожаловать!',
+        type: 'success'
+      })
       setSubmitting(false)
-    }).catch((e) => {
-      console.log(e.response.data)
+      setTimeout(() => {
+        history.push('/')
+      }, 1000)
+    }).catch(() => {
+      openNotification({
+        title: 'Ошибка!',
+        text: 'Неверный логин или пароль',
+        type: 'error'
+      })
       setSubmitting(false)
-      setStatus()
     })
   },
 
   displayName: 'LoginForm',
 })(LoginForm)
+
+
+export default connect(null, userActions)(LoginFormContainer)

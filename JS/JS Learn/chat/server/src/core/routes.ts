@@ -12,14 +12,15 @@ export default (app: express.Application, io: io.Server) => {
   const messageController = new MessageController(io)
   app.use(cors())
   app.use(bodyParser.json())
-  app.use(updateLastSeen)
   app.use(checkAuth)
+  app.use(updateLastSeen)
 
   app.get('/user/me', userController.getMe)
-  app.get('/user/:id', userController.show)
   app.post('/user/registration', userController.create)
   app.post('/user/login', userController.login)
   app.delete('/user/delete/:id', userController.delete)
+  app.post('/user/verify', userController.verify)
+  app.get('/user/:id', userController.show)
 
   app.get('/dialogs', dialogController.index)
   app.post('/dialogs', dialogController.create)

@@ -12,21 +12,22 @@
     "@types/mongoose": "^5.7.32",
     "@types/node": "^14.0.26",
     "@types/socket.io": "^2.1.10",
+    "@types/uuid": "^8.0.0",
     "@types/validator": "^13.1.0",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.7"
   },
   "scripts": {
     "start": "node dist/app.js",
-    "devserver": "nodemon src/server.ts",
-    "build": "tsc -p .",
-    "server": "concurrently -k \"tsc -w\" \"nodemon ./dist/server.js\""
+    "server": "nodemon src/server.ts",
+    "build": "tsc -p ."
   },
   "dependencies": {
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "concurrently": "^5.2.0",
     "cors": "^2.8.5",
+    "date-fns": "^2.15.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-validator": "^6.6.0",
@@ -35,6 +36,7 @@
     "mongoose": "^5.9.25",
     "nodemon": "^2.0.4",
     "socket.io": "^2.3.0",
+    "uuid": "^8.3.0",
     "validator": "^13.1.1"
   }
 }

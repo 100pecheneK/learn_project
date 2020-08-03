@@ -9,10 +9,9 @@ interface IRequestCustom extends express.Request {
 }
 
 export default (req: IRequestCustom, res: express.Response, next: express.NextFunction) => {
-  if (req.path === '/user/login' || req.path === '/user/registration') {
+  if (req.path === '/user/login' || req.path === '/user/registration' || req.path === '/user/verify') {
     return next()
   }
-
   const token = req.headers.token
 
   verifyJWTToken(token)

@@ -9,7 +9,7 @@ const Dialogs = ({items, loading, userId, fetchDialogs, currentDialogId, setCurr
   const [filtered, setFiltered] = useState(Array.from(items || []))
 
   useEffect(() => {
-    if (!items.length) {
+    if (!items) {
       fetchDialogs()
     } else {
       setFiltered(items)

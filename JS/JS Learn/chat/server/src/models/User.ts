@@ -1,5 +1,7 @@
-import mongoose, {Schema, Document} from 'mongoose'
+import mongoose, {Document, Schema} from 'mongoose'
 import validator from "validator"
+import {v4 as uuidv4} from 'uuid'
+import differenceInMinutes from 'date-fns/differenceInMinutes'
 
 
 export interface IUser extends Document {
@@ -9,7 +11,8 @@ export interface IUser extends Document {
   confirmed?: boolean,
   avatar?: string,
   confirm_hash?: string,
-  last_seen?: Date
+  last_seen?: Date,
+  isOnline?: boolean
 }
 
 const UserSchema = new Schema({
@@ -32,14 +35,24 @@ const UserSchema = new Schema({
     default: false
   },
   avatar: String,
-  confirm_hash: String,
+  confirm_hash: {
+    type: String,
+    default: uuidv4()
+  },
   last_seen: {
     type: Date,
     default: new Date()
+  },
+  isOnline: {
+    type: Boolean,
+    default: function (this: any) {
+      return differenceInMinutes(new Date(), new Date(this.last_seen)) < 1
+    }
   }
 }, {
   timestamps: true
 })
+
 
 const UserModel = mongoose.model<IUser>('User', UserSchema)
 

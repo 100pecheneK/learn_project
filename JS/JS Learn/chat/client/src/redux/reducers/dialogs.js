@@ -1,5 +1,5 @@
 const initialState = {
-  items: [],
+  items: null,
   currentDialogId: null,
   loading: true
 }
@@ -22,6 +22,7 @@ export default (state = initialState, {type, payload}) => {
     case 'DIALOGS:ERROR':
       return {
         ...state,
+        items: [],
         error: true,
         loading: false
       }

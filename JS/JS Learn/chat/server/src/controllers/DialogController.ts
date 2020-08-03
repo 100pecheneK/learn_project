@@ -2,6 +2,7 @@ import express from 'express'
 import {DialogModel, MessageModel, UserModel} from '../models'
 import {IUser} from "../models/User"
 import io from 'socket.io'
+import {log} from "util"
 
 
 interface IRequestCustom extends express.Request {
@@ -16,13 +17,16 @@ class DialogController {
   }
 
   index = async (req: IRequestCustom, res: express.Response) => {
-    const authorId = await UserModel.findOne({email: req.user.data.email})
-    if (!authorId) {
-      return res.status(404).json({message: 'Not found'})
-    }
+    const userId = req.user.user._id
     const dialogs = await DialogModel
-      .find({author: authorId.id})
-      .populate('author partner')
+      .find({$or: [{author: userId}, {partner: userId}]})
+      .populate({
+        path: 'author partner lastMessage',
+        populate: {
+          path: 'user'
+        }
+      })
+
     res.json(dialogs)
   }
 
@@ -42,7 +46,13 @@ class DialogController {
       })
       await message.save()
 
-      res.json(dialog)
+      dialog.lastMessage = message.id
+      await dialog.save()
+
+      const populatedDialog = await DialogModel.findById(dialog.id)
+        .populate('author partner lastMessage')
+
+      res.json(populatedDialog)
     } catch (e) {
       res.status(500).send(e)
     }

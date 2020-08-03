@@ -24,14 +24,17 @@ class MessageController {
         dialog: req.body.dialog,
         user: req.user.user._id
       }
+
       const message = new MessageModel(postData)
       await message.save()
-      const msg = await MessageModel.findById(message.id).populate('dialog')
 
-      const dialog = await DialogModel.findById(postData.dialog)
-      if (!dialog) {
-        return res.status(404).json({message: 'Not found'})
-      }
+      await DialogModel.findOneAndUpdate(
+        {_id: message.dialog},
+        {lastMessage: message.id},
+        {upsert: true}
+      )
+
+      const msg = await MessageModel.findById(message.id).populate('dialog')
 
       this.io.emit('SERVER:NEW_MESSAGE', msg)
       res.json(msg)
