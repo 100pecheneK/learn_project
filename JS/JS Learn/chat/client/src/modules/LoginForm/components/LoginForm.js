@@ -1,7 +1,7 @@
 import React from 'react'
 import {Form, Input} from 'antd'
-import {MailOutlined, LockOutlined} from '@ant-design/icons'
-import {Button, Block} from '../../../components'
+import {LockOutlined, MailOutlined} from '@ant-design/icons'
+import {Block, Button} from '../../../components'
 import {Link} from 'react-router-dom'
 import {validateField} from '../../../utils/helpers'
 

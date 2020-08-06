@@ -1,6 +1,7 @@
 const initialState = {
   data: null,
-  isAuth: !!window.localStorage.token
+  isAuth: !!window.localStorage.token,
+  loading: true
 }
 
 export default (state = initialState, {type, payload}) => {
@@ -9,7 +10,14 @@ export default (state = initialState, {type, payload}) => {
       return {
         ...state,
         data: payload,
-        isAuth: true
+        isAuth: true,
+        loading: false
+      }
+    case 'USER:LOGOUT':
+      localStorage.removeItem('token')
+      return {
+        ...initialState,
+        isAuth: false,
       }
     default:
       return state

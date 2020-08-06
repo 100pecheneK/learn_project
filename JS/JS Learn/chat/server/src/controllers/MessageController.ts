@@ -13,7 +13,7 @@ class MessageController {
   index = async (req: express.Request, res: express.Response) => {
     const messages = await MessageModel
       .find({dialog: req.params.dialogId})
-      .populate('dialog')
+      .populate('dialog user')
     res.json(messages)
   }
 
@@ -21,7 +21,7 @@ class MessageController {
     try {
       const postData = {
         text: req.body.text,
-        dialog: req.body.dialog,
+        dialog: req.body.dialogId,
         user: req.user.user._id
       }
 
@@ -34,7 +34,7 @@ class MessageController {
         {upsert: true}
       )
 
-      const msg = await MessageModel.findById(message.id).populate('dialog')
+      const msg = await MessageModel.findById(message.id).populate('dialog user')
 
       this.io.emit('SERVER:NEW_MESSAGE', msg)
       res.json(msg)

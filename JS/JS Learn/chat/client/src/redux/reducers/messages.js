@@ -15,6 +15,11 @@ export default (state = initialState, {type, payload}) => {
         items: payload,
         loading: false
       }
+    case 'MESSAGES:ADD_MESSAGE':
+      return {
+        ...state,
+        items: [...state.items, payload]
+      }
     default:
       return state
   }

@@ -2,7 +2,7 @@ import React from 'react'
 import './Dialogs.scss'
 import {DialogItem} from '../'
 import orderBy from 'lodash/orderBy'
-import {TeamOutlined, FormOutlined} from '@ant-design/icons'
+import {FormOutlined, TeamOutlined} from '@ant-design/icons'
 import {Button, Empty, Input, Spin} from 'antd'
 import classNames from 'classnames'
 
@@ -35,7 +35,8 @@ const Dialogs = ({loading, items, userId, onSearch, currentDialogId, inputValue,
             <DialogItem
               onSelect={onSelectDialog}
               key={item._id}
-              isMe={item.author._id === userId}
+              isMe={item.lastMessage.user._id === userId}
+              meId={userId}
               {...item}
               currentDialogId={currentDialogId}
             />

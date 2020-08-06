@@ -20,7 +20,7 @@ export default ({isAuth, values, errors}) => {
         errors.password2 = 'Пароли не совпадают'
       }
     },
-    fullname: value =>{
+    fullname: value => {
       if (!isAuth && !value) {
         errors.fullname = 'Укажите свои имя и фамилию'
       }

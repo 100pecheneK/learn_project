@@ -1,8 +1,6 @@
 import express from 'express'
-import {DialogModel, MessageModel, UserModel} from '../models'
-import {IUser} from "../models/User"
+import {DialogModel, MessageModel} from '../models'
 import io from 'socket.io'
-import {log} from "util"
 
 
 interface IRequestCustom extends express.Request {
@@ -30,11 +28,20 @@ class DialogController {
     res.json(dialogs)
   }
 
-  create = async (req: express.Request, res: express.Response) => {
+  create = async (req: any, res: express.Response) => {
     try {
       const postData = {
-        author: req.body.author,
+        author: req.user.user._id,
         partner: req.body.partner
+      }
+      const d = await DialogModel.findOne({
+        $or: [
+          {author: postData.author, partner: postData.partner},
+          {author: postData.partner, partner: postData.author}
+        ]
+      })
+      if (d) {
+        return res.status(403).json({message: 'У вас уже создан такой диалог'})
       }
       const dialog = new DialogModel(postData)
       await dialog.save()
@@ -42,7 +49,7 @@ class DialogController {
       const message = new MessageModel({
         text: req.body.text,
         dialog: dialog.id,
-        user: req.body.author
+        user: req.user.user._id
       })
       await message.save()
 
@@ -52,6 +59,7 @@ class DialogController {
       const populatedDialog = await DialogModel.findById(dialog.id)
         .populate('author partner lastMessage')
 
+      this.io.emit('SERVER:DIALOG_CREATED', {populatedDialog})
       res.json(populatedDialog)
     } catch (e) {
       res.status(500).send(e)

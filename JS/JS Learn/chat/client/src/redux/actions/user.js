@@ -9,6 +9,9 @@ const actions = {
   setError: () => ({
     type: 'USER:LOGIN_FAIL'
   }),
+  logout: () => ({
+    type: 'USER:LOGOUT'
+  }),
   fetchUserData: () => dispatch => {
     userApi.getMe().then(({data}) => {
       dispatch(actions.setUserData(data))

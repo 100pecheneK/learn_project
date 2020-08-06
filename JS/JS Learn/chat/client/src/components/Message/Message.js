@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import './Message.scss'
-import {Time, IconReaded, Avatar} from '../'
+import {Avatar, IconReaded, Time} from '../'
 import waveSvg from '../../assets/img/wave.svg'
 import playSvg from '../../assets/img/play.svg'
 import pauseSvg from '../../assets/img/pause.svg'
@@ -70,7 +70,7 @@ const MessageAudio = ({audio}) => {
   )
 }
 
-const Message = ({user, text, created_at, audio, isMe, isReaded, attachments, isTyping}) => {
+const Message = ({isMe, user, text, created_at, audio, isReaded, attachments, isTyping}) => {
   return (
     <div className={classNames('message', {
       'message--isme': isMe,
@@ -126,7 +126,6 @@ Message.propTypes = {
   user: PropTypes.object,
   attachments: PropTypes.array,
   isTyping: PropTypes.bool,
-  isMe: PropTypes.bool,
   isReaded: PropTypes.bool,
   audio: PropTypes.string,
 }

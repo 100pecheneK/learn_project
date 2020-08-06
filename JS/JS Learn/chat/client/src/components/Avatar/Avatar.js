@@ -2,8 +2,8 @@ import React from 'react'
 import './Avatar.scss'
 import {generateAvatarFromHash} from '../../utils/helpers'
 
-const Avatar = ({user}) => {
 
+const Avatar = ({user}) => {
   if (user.avatar) {
     return (
       <img className={'avatar'} src={user.avatar} alt={`${user.fullname} avatar`}/>

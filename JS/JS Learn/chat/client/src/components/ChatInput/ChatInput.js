@@ -2,16 +2,29 @@ import React, {useState} from 'react'
 import {UploadField} from '@navjobs/upload'
 import {Picker} from 'emoji-mart'
 import './ChatInput.scss'
-import {Input, Button} from 'antd'
-import {SmileOutlined, CameraOutlined, AudioOutlined, SendOutlined} from '@ant-design/icons'
+import {Button, Input} from 'antd'
+import {AudioOutlined, CameraOutlined, SendOutlined, SmileOutlined} from '@ant-design/icons'
 
 
-const ChatInput = ({user}) => {
+const ChatInput = ({onSendMessage}) => {
   const [value, setValue] = useState('')
   const [showEmojiPickerVisible, setShowEmojiPickerVisible] = useState(false)
+
   const toggleEmojiPicker = () => {
     setShowEmojiPickerVisible(prev => !prev)
   }
+  const sendMessage = () => {
+    if (value) {
+      onSendMessage(value)
+      setValue('')
+    }
+  }
+  const onEnterPress = (e) => {
+    if (e.key === 'Enter') {
+      sendMessage()
+    }
+  }
+
   return (
     <div className={'chat-input'}>
       <div className="chat-input__smile-btn">
@@ -21,7 +34,12 @@ const ChatInput = ({user}) => {
         <Button onClick={toggleEmojiPicker}
                 type="link" shape="circle" icon={<SmileOutlined/>}/>
       </div>
-      <Input onChange={e => setValue(e.target.value)} placeholder={'Введите текст сообщения...'}/>
+      <Input
+        onKeyPress={onEnterPress}
+        onChange={e => setValue(e.target.value)}
+        placeholder={'Введите текст сообщения...'}
+        value={value}
+      />
       <div className="chat-input__actions">
         <UploadField
           onFiles={files => console.log(files)}
@@ -38,7 +56,8 @@ const ChatInput = ({user}) => {
 
         {!value.trim() ?
           <Button type="link" shape="circle" icon={<AudioOutlined/>}/> :
-          <Button type="link" shape="circle" icon={<SendOutlined/>}/>}
+          <Button onClick={sendMessage} type="link" shape="circle"
+                  icon={<SendOutlined/>}/>}
 
       </div>
     </div>

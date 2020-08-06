@@ -1,6 +1,6 @@
 const initialState = {
   items: null,
-  currentDialogId: null,
+  currentDialogId: window.location.pathname.split('dialog/')[1],
   loading: true
 }
 export default (state = initialState, {type, payload}) => {

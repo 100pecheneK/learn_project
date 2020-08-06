@@ -2,6 +2,7 @@ import tinycolor from 'tinycolor2'
 import md5 from 'crypto-js/md5'
 import Base64 from 'crypto-js/enc-base64'
 
+
 const getCorrectIndex = number => {
   return number > 255 ? 255 : number < 0 ? 0 : number
 }
