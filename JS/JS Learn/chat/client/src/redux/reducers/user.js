@@ -1,11 +1,16 @@
 const initialState = {
   data: null,
-  isAuth: !!window.localStorage.token,
+  isAuth: !!localStorage.getItem('token'),
   loading: true
 }
 
 export default (state = initialState, {type, payload}) => {
   switch (type) {
+    case 'USER:SET_IS_AUTH':
+      return {
+        ...state,
+        isAuth: payload
+      }
     case 'USER:SET_DATA':
       return {
         ...state,
@@ -13,11 +18,12 @@ export default (state = initialState, {type, payload}) => {
         isAuth: true,
         loading: false
       }
+    case 'USER:LOGIN_FAIL':
     case 'USER:LOGOUT':
       localStorage.removeItem('token')
       return {
         ...initialState,
-        isAuth: false,
+        isAuth: false
       }
     default:
       return state

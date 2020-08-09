@@ -19,7 +19,7 @@ const getMessageTime = createdAt => {
 }
 
 
-const DialogItem = ({_id, meId, author, partner, lastMessage: {createdAt, text, unread}, currentDialogId, isMe, onSelect}) => {
+const DialogItem = ({_id, meId, author, partner, lastMessage, currentDialogId, isMe, onSelect}) => {
   const user = author._id === meId ? partner : author
   return (
     <div className={classNames('dialogs__item',
@@ -35,16 +35,18 @@ const DialogItem = ({_id, meId, author, partner, lastMessage: {createdAt, text, 
         <div className="dialogs__item-info-top">
           <b>{user.fullname}</b>
           <span>
-          {getMessageTime(createdAt)}
+          {lastMessage && getMessageTime(lastMessage.createdAt)}
         </span>
         </div>
+        {lastMessage &&
         <div className="dialogs__item-info-bottom">
-          <p>{text}</p>
+          <p>{lastMessage.text}</p>
           {isMe ? <IconReaded isMe={true} isReaded={true}/> :
-            unread > 0 &&
-            <div className={'dialogs__item-info-bottom-count'}>{unread > 9 ? '+9' : unread}</div>
+            lastMessage.unread > 0 &&
+            <div className={'dialogs__item-info-bottom-count'}>{lastMessage.unread > 9 ? '+9' : lastMessage.unread}</div>
           }
         </div>
+        }
       </div>
     </div>
   )

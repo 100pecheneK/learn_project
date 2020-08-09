@@ -58,13 +58,16 @@
     }
   }
 
-  &__icon--readed {
-    position: absolute;
-    bottom: 1.5em;
-    left: -1.5em;
+  &__icon {
+    &--readed {
 
-    &--no {
-      left: -1.2em;
+      position: absolute;
+      bottom: 1.5em;
+      left: -1.5em;
+
+      &--no {
+        left: -1.2em;
+      }
     }
   }
 

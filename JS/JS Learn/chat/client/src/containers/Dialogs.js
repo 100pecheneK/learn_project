@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useCallback, useEffect, useState} from 'react'
 import {Dialogs as BaseDialogs} from '../components'
 import {dialogsActions} from '../redux/actions'
 import {connect} from 'react-redux'
@@ -18,9 +18,10 @@ const Dialogs = ({items, loading, userId, fetchDialogs, currentDialogId, setCurr
     }
   }, [items, fetchDialogs])
 
-  const onNewDialog = () => {
+  const onNewDialog = useCallback(() => {
     fetchDialogs()
-  }
+  }, [fetchDialogs])
+
   useEffect(() => {
     socket.on('SERVER:DIALOG_CREATED', onNewDialog)
 
@@ -47,6 +48,9 @@ const Dialogs = ({items, loading, userId, fetchDialogs, currentDialogId, setCurr
     if (id !== currentDialogId) {
       history.push(`/dialog/${id}`)
       setCurrentDialogId(id)
+    } else {
+      history.push(`/dialog`)
+      setCurrentDialogId(null)
     }
   }
   return <BaseDialogs

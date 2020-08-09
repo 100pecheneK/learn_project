@@ -6,7 +6,7 @@ import {Empty} from 'antd'
 import socket from '../core/socket'
 
 
-const Messages = ({items, user, loading, fetchMessages, addMessage, currentDialogId}) => {
+const Messages = ({items, user, loading, removeMessageById, fetchMessages, addMessage, currentDialogId}) => {
   useEffect(() => {
     if (currentDialogId) {
       fetchMessages(currentDialogId)
@@ -27,7 +27,8 @@ const Messages = ({items, user, loading, fetchMessages, addMessage, currentDialo
     }
   }, [addMessage, currentDialogId, onNewMessage])
 
-  return currentDialogId ? <BaseMessages user={user} loading={loading} items={items}/> :
+  return currentDialogId ?
+    <BaseMessages user={user} onRemoveMessage={removeMessageById} loading={loading} items={items}/> :
     <Empty image={Empty.PRESENTED_IMAGE_DEFAULT} description={'Выбрите диалог'}/>
 }
 

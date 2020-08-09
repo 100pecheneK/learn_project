@@ -29,9 +29,9 @@ const LoginFormContainer = withFormik({
         type: 'success'
       })
       setSubmitting(false)
-      setTimeout(() => {
-        history.push('/')
-      }, 1000)
+
+      history.push('/')
+
     }).catch(() => {
       openNotification({
         title: 'Ошибка!',

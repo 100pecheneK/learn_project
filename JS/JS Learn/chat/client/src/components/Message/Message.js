@@ -7,6 +7,8 @@ import waveSvg from '../../assets/img/wave.svg'
 import playSvg from '../../assets/img/play.svg'
 import pauseSvg from '../../assets/img/pause.svg'
 import {convertToTime} from '../../utils/helpers'
+import {Button, Popover} from 'antd'
+import {EllipsisOutlined} from '@ant-design/icons'
 
 
 const MessageAudio = ({audio}) => {
@@ -70,7 +72,7 @@ const MessageAudio = ({audio}) => {
   )
 }
 
-const Message = ({isMe, user, text, created_at, audio, isReaded, attachments, isTyping}) => {
+const Message = ({isMe, user, text, created_at, audio, isReaded, onRemoveMessage, attachments, isTyping}) => {
   return (
     <div className={classNames('message', {
       'message--isme': isMe,
@@ -80,35 +82,44 @@ const Message = ({isMe, user, text, created_at, audio, isReaded, attachments, is
     })}>
       <div className={'message__content'}>
         <IconReaded isMe={isMe} isReaded={isReaded}/>
+
         <div className="message__avatar">
           <Avatar user={user}/>
         </div>
-        <div className="message__info">
-          {(text || audio || isTyping) && <div className="message__bubble">
-            {text && <p className={'message__text'}>{text}</p>}
-            {isTyping && (
-              <div className="message__typing">
-                <span/>
-                <span/>
-                <span/>
+        <Popover
+          content={
+            <Button onClick={onRemoveMessage}>Удалить сообщение</Button>
+          }
+          title='Действия'
+          trigger='click'
+        >
+          <div className="message__info">
+            {(text || audio || isTyping) && <div className="message__bubble">
+              {text && <p className={'message__text'}>{text}</p>}
+              {isTyping && (
+                <div className="message__typing">
+                  <span/>
+                  <span/>
+                  <span/>
+                </div>
+              )}
+              {audio && <MessageAudio audio={audio}/>}
+            </div>}
+            {attachments && (
+              <div className="message__attachments">
+                {attachments.map((attachment, index) => (
+                  <div key={index} className="message__attachments-item">
+                    <img src={attachment.url} alt={attachment.filename}/>
+                  </div>
+                ))}
               </div>
             )}
-            {audio && <MessageAudio audio={audio}/>}
-          </div>}
-          {attachments && (
-            <div className="message__attachments">
-              {attachments.map((attachment, index) => (
-                <div key={index} className="message__attachments-item">
-                  <img src={attachment.url} alt={attachment.filename}/>
-                </div>
-              ))}
-            </div>
-          )}
-          {created_at && <span className="message__date">
+            {created_at && <span className="message__date">
           <Time date={created_at}/>
         </span>}
 
-        </div>
+          </div>
+        </Popover>
       </div>
     </div>
   )

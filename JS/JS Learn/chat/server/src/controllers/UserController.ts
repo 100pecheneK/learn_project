@@ -102,6 +102,19 @@ class UserController {
     }
     res.json({message: `User ${user.fullname} deleted`})
   }
+  findUsers = async (req: any, res: express.Response) => {
+    try {
+      const search = req.query.search
+      const users = await UserModel.find(
+        {$text: {$search: search}},
+        {score: {$meta: 'textScore'}}
+      ).sort({score: {$meta: 'textScore'}})
+      return res.json(users)
+    } catch (e) {
+      console.error(e)
+      return res.status(500).json({message: 'Server error'})
+    }
+  }
 }
 
 export default UserController

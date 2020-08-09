@@ -32,7 +32,7 @@ class DialogController {
     try {
       const postData = {
         author: req.user.user._id,
-        partner: req.body.partner
+        partner: req.body.partnerId
       }
       const d = await DialogModel.findOne({
         $or: [
@@ -41,19 +41,10 @@ class DialogController {
         ]
       })
       if (d) {
-        return res.status(403).json({message: 'У вас уже создан такой диалог'})
+        return res.status(400).json({message: 'У вас уже создан такой диалог'})
       }
       const dialog = new DialogModel(postData)
       await dialog.save()
-
-      const message = new MessageModel({
-        text: req.body.text,
-        dialog: dialog.id,
-        user: req.user.user._id
-      })
-      await message.save()
-
-      dialog.lastMessage = message.id
       await dialog.save()
 
       const populatedDialog = await DialogModel.findById(dialog.id)

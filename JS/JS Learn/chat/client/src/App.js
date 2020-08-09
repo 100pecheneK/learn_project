@@ -7,13 +7,13 @@ import {Switch} from 'react-router'
 import {userActions} from './redux/actions'
 
 
-function App({isAuth, loading, fetchUserData, logout}) {
+function App({isAuth, data, loading, fetchUserData, logout}) {
 
   useEffect(() => {
-    if (isAuth && loading) {
+    if (isAuth && loading && !data) {
       fetchUserData()
     }
-  }, [fetchUserData, isAuth, loading])
+  }, [fetchUserData, isAuth, loading, data])
 
   return (
     <div className='wrapper'>
@@ -29,4 +29,4 @@ function App({isAuth, loading, fetchUserData, logout}) {
   )
 }
 
-export default connect(({user}) => ({isAuth: user.isAuth, loading: user.loading}), userActions)(App)
+export default connect(({user}) => user, userActions)(App)

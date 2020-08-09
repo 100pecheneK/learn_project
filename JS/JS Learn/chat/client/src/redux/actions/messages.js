@@ -6,6 +6,15 @@ const actions = {
     type: 'MESSAGES:SET_ITEMS',
     payload: items
   }),
+  removeMessageById: (id) => async dispatch => {
+    try {
+      const res = await messagesApi.removeById(id)
+      dispatch({
+        type: 'MESSAGES:REMOVE',
+        payload: id
+      })
+    } catch (e) {}
+  },
   addMessage: message => ({
     type: 'MESSAGES:ADD_MESSAGE',
     payload: message

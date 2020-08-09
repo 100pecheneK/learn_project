@@ -5,7 +5,7 @@ import {Message} from '../'
 import classNames from 'classnames'
 
 
-const Messages = ({user, loading, items}) => {
+const Messages = ({user, loading, items, onRemoveMessage}) => {
   const messagesRef = useRef(null)
 
   useEffect(() => {
@@ -21,6 +21,7 @@ const Messages = ({user, loading, items}) => {
               <Message
                 isMe={user._id === item.user._id}
                 key={item._id}
+                onRemoveMessage={onRemoveMessage.bind(null, item._id)}
                 {...item}
               />) :
             <Empty

@@ -6,7 +6,7 @@ export default function (http: http.Server) {
   const io = socket(http)
 
   io.on('connection', function (socket: socket.Socket) {
-    console.log(`[connection]: ${socket.id}`)
+    // console.log(`[connection]: ${socket.id}`)
   })
   return io
 }

@@ -20,6 +20,7 @@ export default (app: express.Application, io: io.Server) => {
   app.post('/user/login', userController.login)
   app.delete('/user/delete/:id', userController.delete)
   app.post('/user/verify', userController.verify)
+  app.get('/user/find', userController.findUsers)
   app.get('/user/:id', userController.show)
 
   app.get('/dialogs', dialogController.index)

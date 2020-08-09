@@ -7,7 +7,7 @@ import {connect} from 'react-redux'
 import classNames from 'classnames'
 
 
-const Home = ({user}) => {
+const Home = ({user, currentDialogId}) => {
   return (
     <section className={classNames('home',
       {'home--loading': user.loading}
@@ -20,24 +20,32 @@ const Home = ({user}) => {
             />
           </div>
           <div className="chat__dialog">
+
             <div className="chat__dialog-header">
               <div/>
               <div className="chat__dialog-header-center">
-                <b className="chat__dialog-header-username">
-                  <PartnerFullname/>
-                </b>
-                <div className="chat__dialog-header-status">
-                  <Status/>
-                </div>
+                {currentDialogId &&
+                <>
+                  <b className="chat__dialog-header-username">
+                    <PartnerFullname/>
+                  </b>
+                  <div className="chat__dialog-header-status">
+                    <Status/>
+                  </div>
+                </>
+                }
               </div>
               <Button type="link" shape="circle" icon={<EllipsisOutlined/>}/>
             </div>
             <div className="chat__dialog-messages">
               <Messages/>
             </div>
-            <div className="chat__dialog-input">
-              <ChatInput/>
-            </div>
+            {
+              currentDialogId &&
+              <div className="chat__dialog-input">
+                <ChatInput/>
+              </div>
+            }
           </div>
         </div>
       }
@@ -45,4 +53,7 @@ const Home = ({user}) => {
   )
 }
 
-export default connect(({user}) => ({user}))(Home)
+export default connect(({user, dialogs}) => ({
+  user,
+  currentDialogId: dialogs.currentDialogId
+}))(Home)

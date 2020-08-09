@@ -53,6 +53,7 @@ const UserSchema = new Schema({
   timestamps: true
 })
 
+UserSchema.index({email: 'text', fullname: 'text'})
 
 const UserModel = mongoose.model<IUser>('User', UserSchema)
 
