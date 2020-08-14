@@ -6,9 +6,8 @@ import {Avatar, IconReaded, Time} from '../'
 import waveSvg from '../../assets/img/wave.svg'
 import playSvg from '../../assets/img/play.svg'
 import pauseSvg from '../../assets/img/pause.svg'
-import {convertToTime} from '../../utils/helpers'
+import {convertToTime, openNotification} from '../../utils/helpers'
 import {Button, Popover} from 'antd'
-import {EllipsisOutlined} from '@ant-design/icons'
 
 
 const MessageAudio = ({audio}) => {
@@ -73,6 +72,18 @@ const MessageAudio = ({audio}) => {
 }
 
 const Message = ({isMe, user, text, created_at, audio, isReaded, onRemoveMessage, attachments, isTyping}) => {
+  const onAddToClipboard = () => {
+    navigator.clipboard.writeText(text).then(() =>
+      openNotification({
+        'title': 'Скопировано',
+        'type': 'success'
+      })
+    ).catch(() =>
+      openNotification({
+        'title': 'Ошибка',
+        'type': 'error'
+      }))
+  }
   return (
     <div className={classNames('message', {
       'message--isme': isMe,
@@ -88,14 +99,24 @@ const Message = ({isMe, user, text, created_at, audio, isReaded, onRemoveMessage
         </div>
         <Popover
           content={
-            <Button onClick={onRemoveMessage}>Удалить сообщение</Button>
+            <>
+              <Button onClick={onAddToClipboard} block type="primary">Скопировать</Button>
+              {isMe && <Button onClick={onRemoveMessage} block danger style={{marginTop: '1em'}}>Удалить
+                сообщение</Button>}
+            </>
           }
           title='Действия'
           trigger='click'
         >
           <div className="message__info">
             {(text || audio || isTyping) && <div className="message__bubble">
-              {text && <p className={'message__text'}>{text}</p>}
+              {text &&
+              <p
+                className={'message__text'}
+              >
+                {text}
+              </p>
+              }
               {isTyping && (
                 <div className="message__typing">
                   <span/>

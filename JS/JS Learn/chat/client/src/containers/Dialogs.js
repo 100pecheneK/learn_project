@@ -6,10 +6,11 @@ import {useHistory} from 'react-router'
 import socket from '../core/socket'
 
 
-const Dialogs = ({items, loading, userId, fetchDialogs, currentDialogId, setCurrentDialogId}) => {
+const Dialogs = ({items, loading, userId, fetchDialogs, currentDialogId, changeLastMessage, setCurrentDialogId}) => {
   const [inputValue, setInputValue] = useState('')
   const [filtered, setFiltered] = useState(Array.from(items || []))
   const history = useHistory()
+
   useEffect(() => {
     if (!items) {
       fetchDialogs()
@@ -21,7 +22,6 @@ const Dialogs = ({items, loading, userId, fetchDialogs, currentDialogId, setCurr
   const onNewDialog = useCallback(() => {
     fetchDialogs()
   }, [fetchDialogs])
-
   useEffect(() => {
     socket.on('SERVER:DIALOG_CREATED', onNewDialog)
 
@@ -29,6 +29,18 @@ const Dialogs = ({items, loading, userId, fetchDialogs, currentDialogId, setCurr
       socket.off('SERVER:DIALOG_CREATED')
     }
   }, [fetchDialogs, onNewDialog])
+
+  const onNewLastMessage = useCallback((data) => {
+    if (data.author._id === userId || data.partner._id === userId) {
+      changeLastMessage(data)
+    }
+  }, [changeLastMessage, userId])
+  useEffect(() => {
+    socket.on('SERVER:DIALOG_LAST_MESSAGE_CHANGE', onNewLastMessage)
+    return () => {
+      socket.off('SERVER:DIALOG_LAST_MESSAGE_CHANGE')
+    }
+  }, [onNewLastMessage])
 
   const onChangeInput = e => {
     const value = e.target.value
@@ -53,6 +65,7 @@ const Dialogs = ({items, loading, userId, fetchDialogs, currentDialogId, setCurr
       setCurrentDialogId(null)
     }
   }
+
   return <BaseDialogs
     userId={userId}
     items={filtered}

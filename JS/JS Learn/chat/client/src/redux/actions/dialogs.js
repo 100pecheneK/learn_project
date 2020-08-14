@@ -9,6 +9,12 @@ const actions = {
   setError: () => ({
     type: 'DIALOGS:ERROR'
   }),
+  changeLastMessage: (dialog) => dispatch => {
+    dispatch({
+      type: 'DIALOGS:CHANGE_LAST_MESSAGE',
+      payload: dialog
+    })
+  },
   setCurrentDialogId: id => ({
     type: 'DIALOGS:SET_CURRENT_DIALOG_ID',
     payload: id

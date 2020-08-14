@@ -22,7 +22,7 @@ const Dialogs = ({loading, items, userId, onSearch, currentDialogId, inputValue,
       <div className={classNames("dialogs", {'dialogs--loading': loading})}>
         {loading ? <Spin tip="Загрузка..."/> : items.length ? orderBy(
           items,
-          ['created_at'],
+          ['updatedAt'],
           ['desc']
         ).map(item => {
           return (

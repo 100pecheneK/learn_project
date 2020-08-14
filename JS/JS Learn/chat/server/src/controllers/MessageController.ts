@@ -1,6 +1,7 @@
 import express from 'express'
 import {DialogModel, MessageModel, UserModel} from '../models'
 import io from 'socket.io'
+import {log} from "util"
 
 
 class MessageController {
@@ -11,10 +12,20 @@ class MessageController {
   }
 
   index = async (req: express.Request, res: express.Response) => {
-    const messages = await MessageModel
-      .find({dialog: req.params.dialogId})
-      .populate('dialog user')
-    res.json(messages)
+    try {
+      const dialog = await DialogModel.findById(req.params.dialogId)
+      if(!dialog){
+        return res.status(404).json({message:'dialog not found'})
+      }
+
+      const messages = await MessageModel
+        .find({dialog: req.params.dialogId})
+        .populate('dialog user')
+
+      res.json(messages)
+    } catch (e) {
+      res.status(500).send(e)
+    }
   }
 
   create = async (req: any, res: express.Response) => {
@@ -33,18 +44,61 @@ class MessageController {
         {lastMessage: message.id},
         {upsert: true}
       )
-
+      const dialog = await DialogModel.findById(message.dialog).populate({
+        path: 'author partner lastMessage',
+        populate: {
+          path: 'user'
+        }
+      })
       const msg = await MessageModel.findById(message.id).populate('dialog user')
 
       this.io.emit('SERVER:NEW_MESSAGE', msg)
+      this.io.emit('SERVER:DIALOG_LAST_MESSAGE_CHANGE', dialog)
       res.json(msg)
     } catch (e) {
       res.status(500).send(e)
     }
   }
 
-  delete = async (req: express.Request, res: express.Response) => {
-    await MessageModel.findOneAndRemove({_id: req.params.id})
+  delete = async (req: any, res: express.Response) => {
+
+    const message = await MessageModel.findById(req.params.id)
+
+    if (!message) {
+      return res.status(404).json({message: 'Message not found'})
+    }
+
+    if (message.user.toString() !== req.user.user._id) {
+      return res.status(403).json({message: 'Это не твоё!"'})
+    }
+
+    await message.remove()
+    this.io.emit('SERVER:DELETE_MESSAGE', message)
+    const newLastMessage = await MessageModel
+      .findOne({dialog: message.dialog})
+      .sort({'createdAt': -1})
+      .select('_id')
+      .lean()
+
+    const dialog = await DialogModel.findById(message.dialog)
+    if (!dialog) {
+      return res.status(404).json({message: 'Not found dialog'})
+    }
+    if (!newLastMessage) {
+      dialog.lastMessage = null
+    } else {
+      dialog.lastMessage = newLastMessage._id
+    }
+    await dialog.save()
+
+    const newDialog = await DialogModel.findById(message.dialog).populate({
+        path: 'author partner lastMessage',
+        populate: {
+          path: 'user'
+        }
+      })
+
+    this.io.emit('SERVER:DIALOG_LAST_MESSAGE_CHANGE', newDialog)
 
     res.json({message: 'Message deleted'})
   }

@@ -26,6 +26,7 @@
   }
 
   &__bubble {
+    cursor: pointer;
     background-color: $blue;
     box-shadow: 0 5px 5px rgba(54, 116, 255, 0.2);
     border-radius: 12px 12px 12px 0;
@@ -41,6 +42,7 @@
   &__text {
     color: #fff;
     line-height: 20px;
+    cursor: auto;
   }
 
   &__attachments {

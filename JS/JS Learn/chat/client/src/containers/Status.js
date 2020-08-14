@@ -8,8 +8,10 @@ const Status = ({dialogs: {currentDialogId, items, loading: dialogsLoading}, use
   useEffect(() => {
     if (!dialogsLoading && currentDialogId) {
       const currentDialog = items.find(dialog => dialog._id === currentDialogId)
-      const partner = currentDialog.author._id === meId ? currentDialog.partner : currentDialog.author
-      setOnline(partner.isOnline)
+      if (currentDialog) {
+        const partner = currentDialog.author._id === meId ? currentDialog.partner : currentDialog.author
+        setOnline(partner.isOnline)
+      }
     }
   }, [dialogsLoading, currentDialogId, meId, items])
   return (

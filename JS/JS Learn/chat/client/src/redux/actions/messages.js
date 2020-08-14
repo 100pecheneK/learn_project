@@ -6,19 +6,19 @@ const actions = {
     type: 'MESSAGES:SET_ITEMS',
     payload: items
   }),
-  removeMessageById: (id) => async dispatch => {
-    try {
-      const res = await messagesApi.removeById(id)
-      dispatch({
-        type: 'MESSAGES:REMOVE',
-        payload: id
-      })
-    } catch (e) {}
-  },
+  deleteMessage: id => ({
+    type: 'MESSAGES:REMOVE',
+    payload: id
+  }),
   addMessage: message => ({
     type: 'MESSAGES:ADD_MESSAGE',
     payload: message
   }),
+  removeMessageById: (id) => async dispatch => {
+    try {
+      await messagesApi.removeById(id)
+    } catch (e) {}
+  },
   fetchSendMessage: (text, dialogId) => async dispatch => {
     await messagesApi.send(text, dialogId)
   },
@@ -33,6 +33,7 @@ const actions = {
       dispatch(actions.setMessages(res.data))
     } catch (e) {
       dispatch(actions.setLoading(false))
+      dispatch({type: 'MESSAGES:ERROR'})
     }
   }
 }

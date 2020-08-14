@@ -38,7 +38,7 @@
       &:hover {
         cursor: pointer !important;
 
-        input, span, svg {
+        textarea, span, svg {
           cursor: pointer !important;
         }
 
@@ -49,7 +49,7 @@
     }
   }
 
-  input {
+  textarea {
     height: 40px !important;
 
     &:focus {

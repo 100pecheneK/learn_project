@@ -21,6 +21,7 @@ const getMessageTime = createdAt => {
 
 const DialogItem = ({_id, meId, author, partner, lastMessage, currentDialogId, isMe, onSelect}) => {
   const user = author._id === meId ? partner : author
+
   return (
     <div className={classNames('dialogs__item',
       {'dialogs__item--online': user.isOnline},
@@ -41,9 +42,10 @@ const DialogItem = ({_id, meId, author, partner, lastMessage, currentDialogId, i
         {lastMessage &&
         <div className="dialogs__item-info-bottom">
           <p>{lastMessage.text}</p>
-          {isMe ? <IconReaded isMe={true} isReaded={true}/> :
-            lastMessage.unread > 0 &&
-            <div className={'dialogs__item-info-bottom-count'}>{lastMessage.unread > 9 ? '+9' : lastMessage.unread}</div>
+          {isMe ? <IconReaded isMe={true} isReaded={!lastMessage.unread}/> :
+            lastMessage.unreadMessages > 0 &&
+            <div
+              className={'dialogs__item-info-bottom-count'}>{lastMessage.unreadMessages > 9 ? '+9' : lastMessage.unreadMessages}</div>
           }
         </div>
         }
