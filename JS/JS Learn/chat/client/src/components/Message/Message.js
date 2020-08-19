@@ -71,7 +71,7 @@ const MessageAudio = ({audio}) => {
   )
 }
 
-const Message = ({isMe, user, text, created_at, audio, isReaded, onRemoveMessage, attachments, isTyping}) => {
+const Message = ({isMe, user, text, created_at, audio, readed, onRemoveMessage, attachments, isTyping}) => {
   const onAddToClipboard = () => {
     navigator.clipboard.writeText(text).then(() =>
       openNotification({
@@ -92,7 +92,7 @@ const Message = ({isMe, user, text, created_at, audio, isReaded, onRemoveMessage
       'message--image': attachments?.length === 1,
     })}>
       <div className={'message__content'}>
-        <IconReaded isMe={isMe} isReaded={isReaded}/>
+        <IconReaded isMe={isMe} isReaded={readed}/>
 
         <div className="message__avatar">
           <Avatar user={user}/>

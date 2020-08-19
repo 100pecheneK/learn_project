@@ -1,29 +1,21 @@
 const initialState = {
-  data: null,
-  isAuth: !!localStorage.getItem('token'),
-  loading: true
+  items: []
 }
 
 export default (state = initialState, {type, payload}) => {
   switch (type) {
-    case 'USER:SET_IS_AUTH':
+    case 'ATTACHMENTS:ADD_FILE':
       return {
         ...state,
-        isAuth: payload
+        items: [
+          ...state.items,
+          payload
+        ]
       }
-    case 'USER:SET_DATA':
+    case 'ATTACHMENTS:REMOVE_FILE':
       return {
         ...state,
-        data: payload,
-        isAuth: true,
-        loading: false
-      }
-    case 'USER:LOGIN_FAIL':
-    case 'USER:LOGOUT':
-      localStorage.removeItem('token')
-      return {
-        ...initialState,
-        isAuth: false
+        items: state.items.filter(file => file._id !== payload)
       }
     default:
       return state

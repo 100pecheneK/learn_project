@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import format from 'date-fns/format'
 import isToday from 'date-fns/isToday'
 import {Avatar, IconReaded} from '../'
+import differenceInMinutes from 'date-fns/differenceInMinutes'
 
 
 const getMessageTime = createdAt => {
@@ -21,10 +22,10 @@ const getMessageTime = createdAt => {
 
 const DialogItem = ({_id, meId, author, partner, lastMessage, currentDialogId, isMe, onSelect}) => {
   const user = author._id === meId ? partner : author
-
+  const isOnline = differenceInMinutes(new Date(), new Date(user.last_seen)) < 1
   return (
     <div className={classNames('dialogs__item',
-      {'dialogs__item--online': user.isOnline},
+      {'dialogs__item--online': isOnline},
       {'dialogs__item--selected': currentDialogId === _id}
     )}
          onClick={onSelect.bind(this, _id)}
@@ -42,7 +43,7 @@ const DialogItem = ({_id, meId, author, partner, lastMessage, currentDialogId, i
         {lastMessage &&
         <div className="dialogs__item-info-bottom">
           <p>{lastMessage.text}</p>
-          {isMe ? <IconReaded isMe={true} isReaded={!lastMessage.unread}/> :
+          {isMe ? <IconReaded isMe={true} isReaded={lastMessage.readed}/> :
             lastMessage.unreadMessages > 0 &&
             <div
               className={'dialogs__item-info-bottom-count'}>{lastMessage.unreadMessages > 9 ? '+9' : lastMessage.unreadMessages}</div>

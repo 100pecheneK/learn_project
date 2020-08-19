@@ -2,12 +2,13 @@ import React from 'react'
 import './Home.scss'
 import {ChatInput, Dialogs, Messages, Status, PartnerFullname} from '../../containers'
 import {EllipsisOutlined} from '@ant-design/icons'
-import {Button, Spin} from 'antd'
+import {Button, Popover, Spin} from 'antd'
 import {connect} from 'react-redux'
 import classNames from 'classnames'
+import {userActions} from '../../redux/actions'
 
 
-const Home = ({user, currentDialogId}) => {
+const Home = ({user, currentDialogId, logout}) => {
   return (
     <section className={classNames('home',
       {'home--loading': user.loading}
@@ -35,7 +36,17 @@ const Home = ({user, currentDialogId}) => {
                 </>
                 }
               </div>
-              <Button type="link" shape="circle" icon={<EllipsisOutlined/>}/>
+              <Popover
+                content={
+                  <>
+                    <Button onClick={logout} block danger>Выйти</Button>
+                  </>
+                }
+                title='Настройки'
+                trigger='click'
+              >
+                <Button type="link" shape="circle" icon={<EllipsisOutlined/>}/>
+              </Popover>
             </div>
             <div className="chat__dialog-messages">
               <Messages/>
@@ -53,7 +64,9 @@ const Home = ({user, currentDialogId}) => {
   )
 }
 
-export default connect(({user, dialogs}) => ({
-  user,
-  currentDialogId: dialogs.currentDialogId
-}))(Home)
+export default connect(
+  ({user, dialogs}) => ({
+    user,
+    currentDialogId: dialogs.currentDialogId
+  }),
+  userActions)(Home)

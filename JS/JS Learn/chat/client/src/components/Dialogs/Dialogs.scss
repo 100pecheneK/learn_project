@@ -24,6 +24,12 @@
 
     &--selected, &--selected:hover {
       background-color: #e4ebee;
+
+      #{$item}-info-bottom {
+        p {
+          opacity: 1;
+        }
+      }
     }
 
     &-avatar {

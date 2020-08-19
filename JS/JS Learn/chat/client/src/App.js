@@ -7,7 +7,7 @@ import {Switch} from 'react-router'
 import {userActions} from './redux/actions'
 
 
-function App({isAuth, data, loading, fetchUserData, logout}) {
+function App({isAuth, data, loading, fetchUserData}) {
 
   useEffect(() => {
     if (isAuth && loading && !data) {
@@ -17,7 +17,6 @@ function App({isAuth, data, loading, fetchUserData, logout}) {
 
   return (
     <div className='wrapper'>
-      <button style={{position: 'fixed'}} onClick={logout}>CLEAR ALL</button>
       <Switch>
         <Route path={['/login', '/register', '/register/verify']} component={Auth}/>
 
