@@ -1,15 +1,18 @@
-import {DialogController, MessageController, UserController} from '../controllers'
+import {DialogController, MessageController, UserController, UploadController} from '../controllers'
 import bodyParser from 'body-parser'
 import {checkAuth, updateLastSeen} from '../middleware'
 import express from "express"
 import io from 'socket.io'
 import cors from 'cors'
+import uploader from './uploader'
 
 
 export default (app: express.Application, io: io.Server) => {
   const userController = new UserController(io)
   const dialogController = new DialogController(io)
   const messageController = new MessageController(io)
+  const uploadController = new UploadController()
+
   app.use(cors())
   app.use(bodyParser.json())
   app.use(checkAuth)
@@ -30,4 +33,7 @@ export default (app: express.Application, io: io.Server) => {
   app.get('/messages/:dialogId', messageController.index)
   app.post('/messages', messageController.create)
   app.delete('/messages/delete/:id', messageController.delete)
+
+  app.post('/files', uploader.single('image'), uploadController.create)
+  app.delete('/files', uploadController.delete)
 }

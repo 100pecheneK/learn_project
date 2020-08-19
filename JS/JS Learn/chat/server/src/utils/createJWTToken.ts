@@ -1,6 +1,4 @@
 import jwt from 'jsonwebtoken'
-import {reduce} from 'lodash'
-import {IUser} from '../models/User'
 
 
 export default (user: any) => jwt.sign(

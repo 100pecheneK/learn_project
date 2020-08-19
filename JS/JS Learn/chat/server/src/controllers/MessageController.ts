@@ -11,12 +11,18 @@ class MessageController {
     this.io = io
   }
 
-  index = async (req: express.Request, res: express.Response) => {
+  index = async (req: any, res: express.Response) => {
     try {
-      const dialog = await DialogModel.findById(req.params.dialogId)
-      if(!dialog){
-        return res.status(404).json({message:'dialog not found'})
+      const user = req.user.user._id
+      const dialog = await DialogModel.findById(req.params.dialogId).select('author, partner')
+      if (!dialog) {
+        return res.status(404).json({message: 'dialog not found'})
       }
+
+      await MessageModel.updateMany(
+        {'dialog': req.params.dialogId, user: {$ne: user}},
+        {readed: true}
+      )
 
       const messages = await MessageModel
         .find({dialog: req.params.dialogId})
@@ -24,6 +30,7 @@ class MessageController {
 
       res.json(messages)
     } catch (e) {
+      console.log(e)
       res.status(500).send(e)
     }
   }
@@ -92,11 +99,11 @@ class MessageController {
     await dialog.save()
 
     const newDialog = await DialogModel.findById(message.dialog).populate({
-        path: 'author partner lastMessage',
-        populate: {
-          path: 'user'
-        }
-      })
+      path: 'author partner lastMessage',
+      populate: {
+        path: 'user'
+      }
+    })
 
     this.io.emit('SERVER:DIALOG_LAST_MESSAGE_CHANGE', newDialog)
 

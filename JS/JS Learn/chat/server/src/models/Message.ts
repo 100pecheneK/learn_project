@@ -4,14 +4,14 @@ import validator from "validator"
 
 export interface IMessage extends Document {
   text: string,
-  unread: boolean,
+  readed: boolean,
   user: string,
   dialog: string
 }
 
 const MessageSchema = new Schema({
   text: String,
-  unread: {type: Boolean, default: true},
+  readed: {type: Boolean, default: false},
   user: {type: Schema.Types.ObjectId, ref: 'User'},
   dialog: {type: Schema.Types.ObjectId, ref: 'Dialog'}
 }, {

@@ -102,6 +102,7 @@ class UserController {
     }
     res.json({message: `User ${user.fullname} deleted`})
   }
+
   findUsers = async (req: any, res: express.Response) => {
     try {
       const search = req.query.search
