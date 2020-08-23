@@ -12,9 +12,9 @@ class UploadController {
         url: req.file.path,
         user,
       }
-      const uploadedFile = new UploadFileModel(file)
-      await uploadedFile.save()
-      return res.json({uploadedFile})
+      const uploadFile = new UploadFileModel(file)
+      await uploadFile.save()
+      return res.json({file:uploadFile})
     } catch (e) {
       console.log(e)
       return res.status(500).send('error')

@@ -42,7 +42,7 @@ const DialogItem = ({_id, meId, author, partner, lastMessage, currentDialogId, i
         </div>
         {lastMessage &&
         <div className="dialogs__item-info-bottom">
-          <p>{lastMessage.text}</p>
+          <p>{lastMessage.text ? lastMessage.text : lastMessage.attachments?.length > 1 ? 'Изображения' : 'Изображение'}</p>
           {isMe ? <IconReaded isMe={true} isReaded={lastMessage.readed}/> :
             lastMessage.unreadMessages > 0 &&
             <div

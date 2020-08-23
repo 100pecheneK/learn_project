@@ -3,19 +3,22 @@ import validator from "validator"
 
 
 export interface IMessage extends Document {
-  text: string,
+  text?: string,
   readed: boolean,
   user: string,
-  dialog: string
+  dialog: string,
+  attachments?: [object]
 }
 
 const MessageSchema = new Schema({
   text: String,
   readed: {type: Boolean, default: false},
   user: {type: Schema.Types.ObjectId, ref: 'User'},
-  dialog: {type: Schema.Types.ObjectId, ref: 'Dialog'}
+  dialog: {type: Schema.Types.ObjectId, ref: 'Dialog'},
+  attachments: [{type: Schema.Types.ObjectId, ref: 'UploadFile'}]
 }, {
-  timestamps: true
+  timestamps: true,
+  usePushEach: true
 })
 
 const MessageModel = mongoose.model<IMessage>('Message', MessageSchema)

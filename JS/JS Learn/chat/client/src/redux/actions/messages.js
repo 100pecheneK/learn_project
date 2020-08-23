@@ -19,8 +19,11 @@ const actions = {
       await messagesApi.removeById(id)
     } catch (e) {}
   },
-  fetchSendMessage: (text, dialogId) => async dispatch => {
-    await messagesApi.send(text, dialogId)
+  fetchSendMessage: ({dialogId, text, attachments}) => async dispatch => {
+    const data = {dialogId}
+    if (text) data.text = text
+    if (attachments) data.attachments = attachments
+    await messagesApi.send(data)
   },
   setLoading: loading => ({
     type: 'MESSAGES:SET_LOADING',

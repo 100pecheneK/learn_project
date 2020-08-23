@@ -14,7 +14,6 @@ const storage = new CloudinaryStorage({
   params: {
     folder: 'images',
     allowedFormats: ['jpg', 'jpeg', 'png', 'gif'],
-    transformation: [{width: 500, height: 500, crop: 'limit'}]
   }
 })
 

@@ -1,16 +1,15 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {UploadField} from '@navjobs/upload'
 import {Picker} from 'emoji-mart'
 import './ChatInput.scss'
-import {Button, Input} from 'antd'
+import {Button, Input, Spin} from 'antd'
 import {AudioOutlined, CameraOutlined, SendOutlined, SmileOutlined} from '@ant-design/icons'
-import {UploadFiles} from '../'
 
 
-const ChatInput = ({onSendMessage}) => {
+const ChatInput = ({onSendMessage, setFileList, fileList, isUploadingFiles}) => {
   const [value, setValue] = useState('')
   const [showEmojiPickerVisible, setShowEmojiPickerVisible] = useState(false)
-  const [fileList, setFileList] = useState(null)
+
 
   const toggleEmojiPicker = () => {
     setShowEmojiPickerVisible(prev => !prev)
@@ -19,7 +18,7 @@ const ChatInput = ({onSendMessage}) => {
     setShowEmojiPickerVisible(false)
   }
   const sendMessage = () => {
-    if (value.trim()) {
+    if (!isUploadingFiles && (value.trim() || fileList)) {
       if (showEmojiPickerVisible) {
         closeEmojiPicker()
       }
@@ -66,18 +65,22 @@ const ChatInput = ({onSendMessage}) => {
               multiple: 'multiple'
             }}
           >
-            <Button type="link" shape="circle" icon={<CameraOutlined/>}/>
+            <Button style={{opacity: fileList !== 0 ? '1' : ''}} type="link" shape="circle"
+                    icon={<CameraOutlined/>}/>
+            {fileList !== 0 && <span style={{
+              position: 'absolute',
+              top: '0',
+              left: '12px',
+            }}>{fileList}</span>}
           </UploadField>
 
-          {!value.trim() ?
-            <Button type="link" shape="circle" icon={<AudioOutlined/>}/> :
+          {isUploadingFiles ? <Spin/> : value.trim() || fileList ?
             <Button onClick={sendMessage} type="link" shape="circle"
-                    icon={<SendOutlined/>}/>}
+                    icon={<SendOutlined/>}/> :
+            <Button type="link" shape="circle" icon={<AudioOutlined/>}/>
+          }
 
         </div>
-      </div>
-      <div>
-        <UploadFiles/>
       </div>
     </>
   )

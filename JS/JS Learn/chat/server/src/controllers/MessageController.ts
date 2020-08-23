@@ -26,7 +26,7 @@ class MessageController {
 
       const messages = await MessageModel
         .find({dialog: req.params.dialogId})
-        .populate('dialog user')
+        .populate('dialog user attachments')
 
       res.json(messages)
     } catch (e) {
@@ -37,11 +37,13 @@ class MessageController {
 
   create = async (req: any, res: express.Response) => {
     try {
-      const postData = {
-        text: req.body.text,
+      console.log(req.body)
+      const postData: any = {
         dialog: req.body.dialogId,
-        user: req.user.user._id
+        user: req.user.user._id,
       }
+      if (req.body.attachments) postData.attachments = req.body.attachments
+      if (req.body.text) postData.text = req.body.text
 
       const message = new MessageModel(postData)
       await message.save()
@@ -57,12 +59,13 @@ class MessageController {
           path: 'user'
         }
       })
-      const msg = await MessageModel.findById(message.id).populate('dialog user')
+      const msg = await MessageModel.findById(message.id).populate('dialog user attachments')
 
       this.io.emit('SERVER:NEW_MESSAGE', msg)
       this.io.emit('SERVER:DIALOG_LAST_MESSAGE_CHANGE', dialog)
       res.json(msg)
     } catch (e) {
+      // console.log(e)
       res.status(500).send(e)
     }
   }

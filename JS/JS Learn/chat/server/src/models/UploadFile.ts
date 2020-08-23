@@ -1,7 +1,7 @@
 import mongoose, {Schema, Document} from 'mongoose'
 
 
-export interface IUploadedFile extends Document {
+export interface IUploadFile extends Document {
   filename?: string,
   size?: number
   url?: string,
@@ -10,7 +10,7 @@ export interface IUploadedFile extends Document {
   user?: string
 }
 
-const UploadedFileSchema = new Schema({
+const UploadFileSchema = new Schema({
   filename: String,
   size: Number,
   url: String,
@@ -21,6 +21,6 @@ const UploadedFileSchema = new Schema({
   timestamps: true
 })
 
-const UploadFileModel = mongoose.model<IUploadedFile>('UploadFile', UploadedFileSchema)
+const UploadFileModel = mongoose.model<IUploadFile>('UploadFile', UploadFileSchema)
 
 export default UploadFileModel

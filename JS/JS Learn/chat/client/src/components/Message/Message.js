@@ -7,7 +7,7 @@ import waveSvg from '../../assets/img/wave.svg'
 import playSvg from '../../assets/img/play.svg'
 import pauseSvg from '../../assets/img/pause.svg'
 import {convertToTime, openNotification} from '../../utils/helpers'
-import {Button, Popover} from 'antd'
+import {Button, Modal, Popover} from 'antd'
 
 
 const MessageAudio = ({audio}) => {
@@ -70,7 +70,32 @@ const MessageAudio = ({audio}) => {
     </div>
   )
 }
-
+const Attachment = ({attachment, closePopover}) => {
+  const [isImageVisible, setIsImageVisible] = useState(false)
+  const closeImage = () => {
+    setIsImageVisible(false)
+  }
+  const openImage = () => {
+    closePopover()
+    setIsImageVisible(true)
+  }
+  return (
+    <>
+      <div className="message__attachments-item">
+        <img src={attachment.url} alt={attachment.filename} onClick={openImage}/>
+      </div>
+      <Modal
+        visible={isImageVisible}
+        title={attachment.filename}
+        footer={null}
+        onCancel={closeImage}
+        style={{top:'3em'}}
+      >
+        <img style={{width: '100%'}} src={attachment.url} alt={attachment.filename}/>
+      </Modal>
+    </>
+  )
+}
 const Message = ({isMe, user, text, created_at, audio, readed, onRemoveMessage, attachments, isTyping}) => {
   const onAddToClipboard = () => {
     navigator.clipboard.writeText(text).then(() =>
@@ -84,12 +109,38 @@ const Message = ({isMe, user, text, created_at, audio, readed, onRemoveMessage, 
         'type': 'error'
       }))
   }
+
+  const [isPopoverVisible, setIsPopoverVisible] = useState(false)
+  const popoverRef = useRef(null)
+  useEffect(() => {
+    if (isPopoverVisible) {
+      document.addEventListener('click', handleClickOutside)
+    } else {
+      document.removeEventListener('click', handleClickOutside)
+    }
+    return () => document.removeEventListener('click', handleClickOutside)
+  }, [isPopoverVisible])
+
+  const handleClickOutside = (event) => {
+    const element = popoverRef.current.triggerRef.current
+    if (!element.contains(event.target)) {
+      closePopover()
+    }
+  }
+  const closePopover = () => {
+    setIsPopoverVisible(false)
+  }
+  const openPopover = (e) => {
+    e.preventDefault()
+    setIsPopoverVisible(true)
+  }
+
   return (
     <div className={classNames('message', {
       'message--isme': isMe,
       'message--is-typing': isTyping,
       'message--is-audio': audio,
-      'message--image': attachments?.length === 1,
+      'message--image': attachments?.length === 1 && !text,
     })}>
       <div className={'message__content'}>
         <IconReaded isMe={isMe} isReaded={readed}/>
@@ -98,17 +149,20 @@ const Message = ({isMe, user, text, created_at, audio, readed, onRemoveMessage, 
           <Avatar user={user}/>
         </div>
         <Popover
+          ref={popoverRef}
           content={
             <>
-              <Button onClick={onAddToClipboard} block type="primary">Скопировать</Button>
+              {text && <Button onClick={onAddToClipboard} block type="primary">Скопировать</Button>}
               {isMe && <Button onClick={onRemoveMessage} block danger style={{marginTop: '1em'}}>Удалить
                 сообщение</Button>}
             </>
           }
           title='Действия'
-          trigger='click'
+          visible={isPopoverVisible}
         >
-          <div className="message__info">
+          <div className="message__info"
+               onContextMenu={openPopover}
+          >
             {(text || audio || isTyping) && <div className="message__bubble">
               {text &&
               <p
@@ -129,9 +183,7 @@ const Message = ({isMe, user, text, created_at, audio, readed, onRemoveMessage, 
             {attachments && (
               <div className="message__attachments">
                 {attachments.map((attachment, index) => (
-                  <div key={index} className="message__attachments-item">
-                    <img src={attachment.url} alt={attachment.filename}/>
-                  </div>
+                  <Attachment attachment={attachment} key={index} closePopover={closePopover}/>
                 ))}
               </div>
             )}

@@ -9,6 +9,7 @@ import {userActions} from '../../redux/actions'
 
 
 const Home = ({user, currentDialogId, logout}) => {
+
   return (
     <section className={classNames('home',
       {'home--loading': user.loading}
