@@ -2,11 +2,12 @@ import React from 'react'
 import classNames from 'classnames'
 import format from 'date-fns/format'
 import isToday from 'date-fns/isToday'
-import {IconReaded, Avatar} from '../'
+import {Avatar, IconReaded} from '../'
+import differenceInMinutes from 'date-fns/differenceInMinutes'
 
 
-const getMessageTime = created_at => {
-  const date = new Date(created_at)
+const getMessageTime = createdAt => {
+  const date = new Date(createdAt)
   if (isToday(date)) {
     return format(
       date, 'HH:mm'
@@ -19,32 +20,39 @@ const getMessageTime = created_at => {
 }
 
 
-const DialogItem = ({_id, user, created_at, text, currentDialogId, unread, isMe, onSelect}) => (
-  <div className={classNames('dialogs__item',
-    {'dialogs__item--online': user.isOnline},
-    {'dialogs__item--selected': currentDialogId === _id}
-  )}
-       onClick={onSelect.bind(this, _id)}
-  >
-    <div className="dialogs__item-avatar">
-      <Avatar user={user}/>
-    </div>
-    <div className="dialogs__item-info">
-      <div className="dialogs__item-info-top">
-        <b>{user.fullname}</b>
-        <span>
-          {getMessageTime(created_at)}
-        </span>
+const DialogItem = ({_id, meId, author, partner, lastMessage, currentDialogId, isMe, onSelect}) => {
+  const user = author._id === meId ? partner : author
+  const isOnline = differenceInMinutes(new Date(), new Date(user.last_seen)) < 1
+  return (
+    <div className={classNames('dialogs__item',
+      {'dialogs__item--online': isOnline},
+      {'dialogs__item--selected': currentDialogId === _id}
+    )}
+         onClick={onSelect.bind(this, _id)}
+    >
+      <div className="dialogs__item-avatar">
+        <Avatar user={user}/>
       </div>
-      <div className="dialogs__item-info-bottom">
-        <p>{text}</p>
-        {isMe && <IconReaded isMe={true} isReaded={true}/>}
-        {unread > 0 &&
-        <div className={'dialogs__item-info-bottom-count'}>{unread > 9 ? '+9' : unread}</div>
+      <div className="dialogs__item-info">
+        <div className="dialogs__item-info-top">
+          <b>{user.fullname}</b>
+          <span>
+          {lastMessage && getMessageTime(lastMessage.createdAt)}
+        </span>
+        </div>
+        {lastMessage &&
+        <div className="dialogs__item-info-bottom">
+          <p>{lastMessage.text ? lastMessage.text : lastMessage.attachments?.length > 1 ? 'Изображения' : 'Изображение'}</p>
+          {isMe ? <IconReaded isMe={true} isReaded={lastMessage.readed}/> :
+            lastMessage.unreadMessages > 0 &&
+            <div
+              className={'dialogs__item-info-bottom-count'}>{lastMessage.unreadMessages > 9 ? '+9' : lastMessage.unreadMessages}</div>
+          }
+        </div>
         }
       </div>
     </div>
-  </div>
-)
+  )
+}
 
 export default DialogItem

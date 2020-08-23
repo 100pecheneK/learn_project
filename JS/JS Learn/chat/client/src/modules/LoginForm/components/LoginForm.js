@@ -1,9 +1,10 @@
 import React from 'react'
 import {Form, Input} from 'antd'
-import {MailOutlined, LockOutlined} from '@ant-design/icons'
-import {Button, Block} from '../../../components'
+import {LockOutlined, MailOutlined} from '@ant-design/icons'
+import {Block, Button} from '../../../components'
 import {Link} from 'react-router-dom'
 import {validateField} from '../../../utils/helpers'
+
 
 const LoginForm = props => {
   const {
@@ -11,7 +12,8 @@ const LoginForm = props => {
     errors,
     handleChange,
     handleBlur,
-    handleSubmit
+    handleSubmit,
+    isSubmitting,
   } = props
 
   return (
@@ -62,7 +64,8 @@ const LoginForm = props => {
             />
           </Form.Item>
           <Form.Item>
-            <Button type="primary" htmlType="submit" className="login-form-button" size={'large'}>
+            <Button disabled={isSubmitting} type="primary" htmlType="submit"
+                    className="login-form-button" size={'large'}>
               Войти в аккаунт
             </Button>
           </Form.Item>

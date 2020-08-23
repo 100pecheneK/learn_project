@@ -24,6 +24,12 @@
 
     &--selected, &--selected:hover {
       background-color: #e4ebee;
+
+      #{$item}-info-bottom {
+        p {
+          opacity: 1;
+        }
+      }
     }
 
     &-avatar {
@@ -104,7 +110,6 @@
           max-width: 25px;
           height: 18px;
           border-radius: 30px;
-          box-shadow: 0 0 0 3px #fff;
         }
 
         .message__icon--readed {

@@ -1,0 +1,24 @@
+.list {
+  //background-color: #fff;
+
+  &__item {
+    border-radius: 5px;
+    padding: 1em;
+    border-bottom: rgba(33, 33, 33, 0.2) 1px solid;
+  }
+
+  &__item:hover {
+    background-color: #999;
+    color: white;
+  }
+
+  &__item--done {
+    color: #bbb;
+    text-decoration: line-through;
+  }
+
+  &__item--done:hover {
+    background-color: #ddd;
+    color: #888;
+  }
+}

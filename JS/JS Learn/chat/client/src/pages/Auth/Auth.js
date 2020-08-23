@@ -3,6 +3,7 @@ import './Auth.scss'
 import {Route} from 'react-router-dom'
 
 import {LoginForm, RegisterForm} from '../../modules'
+import CheckRegisterInfo from './components/CheckRegisterInfo'
 
 
 const Auth = () => (
@@ -10,6 +11,7 @@ const Auth = () => (
     <div className="auth__content">
       <Route exact path={['/', '/login']} component={LoginForm}/>
       <Route exact path={'/register'} component={RegisterForm}/>
+      <Route exact path={'/register/verify'} component={CheckRegisterInfo}/>
     </div>
   </section>
 )

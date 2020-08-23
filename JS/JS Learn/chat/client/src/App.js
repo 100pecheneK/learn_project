@@ -1,16 +1,31 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 
 import {Auth, Home} from './pages'
-import {Route} from 'react-router-dom'
+import {Redirect, Route} from 'react-router-dom'
+import {connect} from 'react-redux'
+import {Switch} from 'react-router'
+import {userActions} from './redux/actions'
 
 
-function App() {
+function App({isAuth, data, loading, fetchUserData}) {
+
+  useEffect(() => {
+    if (isAuth && loading && !data) {
+      fetchUserData()
+    }
+  }, [fetchUserData, isAuth, loading, data])
+
   return (
     <div className='wrapper'>
-      <Route exact path={['/', '/login', '/register']} component={Auth}/>
-      <Route exact path={'/im'} component={Home}/>
+      <Switch>
+        <Route path={['/login', '/register', '/register/verify']} component={Auth}/>
+
+        <Route path={['/', '/dialog/:id']} render={() => (
+          isAuth ? <Home/> : <Redirect to={'/login'}/>
+        )}/>
+      </Switch>
     </div>
   )
 }
 
-export default App
+export default connect(({user}) => user, userActions)(App)

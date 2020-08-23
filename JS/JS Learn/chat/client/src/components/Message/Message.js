@@ -2,11 +2,12 @@ import React, {useEffect, useRef, useState} from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import './Message.scss'
-import {Time, IconReaded, Avatar} from '../'
+import {Avatar, IconReaded, Time} from '../'
 import waveSvg from '../../assets/img/wave.svg'
 import playSvg from '../../assets/img/play.svg'
 import pauseSvg from '../../assets/img/pause.svg'
-import {convertToTime} from '../../utils/helpers'
+import {convertToTime, openNotification} from '../../utils/helpers'
+import {Button, Modal, Popover} from 'antd'
 
 
 const MessageAudio = ({audio}) => {
@@ -69,46 +70,129 @@ const MessageAudio = ({audio}) => {
     </div>
   )
 }
+const Attachment = ({attachment, closePopover}) => {
+  const [isImageVisible, setIsImageVisible] = useState(false)
+  const closeImage = () => {
+    setIsImageVisible(false)
+  }
+  const openImage = () => {
+    closePopover()
+    setIsImageVisible(true)
+  }
+  return (
+    <>
+      <div className="message__attachments-item">
+        <img src={attachment.url} alt={attachment.filename} onClick={openImage}/>
+      </div>
+      <Modal
+        visible={isImageVisible}
+        title={attachment.filename}
+        footer={null}
+        onCancel={closeImage}
+        style={{top:'3em'}}
+      >
+        <img style={{width: '100%'}} src={attachment.url} alt={attachment.filename}/>
+      </Modal>
+    </>
+  )
+}
+const Message = ({isMe, user, text, created_at, audio, readed, onRemoveMessage, attachments, isTyping}) => {
+  const onAddToClipboard = () => {
+    navigator.clipboard.writeText(text).then(() =>
+      openNotification({
+        'title': 'Скопировано',
+        'type': 'success'
+      })
+    ).catch(() =>
+      openNotification({
+        'title': 'Ошибка',
+        'type': 'error'
+      }))
+  }
 
-const Message = ({user, text, created_at, audio, isMe, isReaded, attachments, isTyping}) => {
+  const [isPopoverVisible, setIsPopoverVisible] = useState(false)
+  const popoverRef = useRef(null)
+  useEffect(() => {
+    if (isPopoverVisible) {
+      document.addEventListener('click', handleClickOutside)
+    } else {
+      document.removeEventListener('click', handleClickOutside)
+    }
+    return () => document.removeEventListener('click', handleClickOutside)
+  }, [isPopoverVisible])
+
+  const handleClickOutside = (event) => {
+    const element = popoverRef.current.triggerRef.current
+    if (!element.contains(event.target)) {
+      closePopover()
+    }
+  }
+  const closePopover = () => {
+    setIsPopoverVisible(false)
+  }
+  const openPopover = (e) => {
+    e.preventDefault()
+    setIsPopoverVisible(true)
+  }
+
   return (
     <div className={classNames('message', {
       'message--isme': isMe,
       'message--is-typing': isTyping,
       'message--is-audio': audio,
-      'message--image': attachments?.length === 1,
+      'message--image': attachments?.length === 1 && !text,
     })}>
       <div className={'message__content'}>
-        <IconReaded isMe={isMe} isReaded={isReaded}/>
+        <IconReaded isMe={isMe} isReaded={readed}/>
+
         <div className="message__avatar">
           <Avatar user={user}/>
         </div>
-        <div className="message__info">
-          {(text || audio || isTyping) && <div className="message__bubble">
-            {text && <p className={'message__text'}>{text}</p>}
-            {isTyping && (
-              <div className="message__typing">
-                <span/>
-                <span/>
-                <span/>
+        <Popover
+          ref={popoverRef}
+          content={
+            <>
+              {text && <Button onClick={onAddToClipboard} block type="primary">Скопировать</Button>}
+              {isMe && <Button onClick={onRemoveMessage} block danger style={{marginTop: '1em'}}>Удалить
+                сообщение</Button>}
+            </>
+          }
+          title='Действия'
+          visible={isPopoverVisible}
+        >
+          <div className="message__info"
+               onContextMenu={openPopover}
+          >
+            {(text || audio || isTyping) && <div className="message__bubble">
+              {text &&
+              <p
+                className={'message__text'}
+              >
+                {text}
+              </p>
+              }
+              {isTyping && (
+                <div className="message__typing">
+                  <span/>
+                  <span/>
+                  <span/>
+                </div>
+              )}
+              {audio && <MessageAudio audio={audio}/>}
+            </div>}
+            {attachments && (
+              <div className="message__attachments">
+                {attachments.map((attachment, index) => (
+                  <Attachment attachment={attachment} key={index} closePopover={closePopover}/>
+                ))}
               </div>
             )}
-            {audio && <MessageAudio audio={audio}/>}
-          </div>}
-          {attachments && (
-            <div className="message__attachments">
-              {attachments.map((attachment, index) => (
-                <div key={index} className="message__attachments-item">
-                  <img src={attachment.url} alt={attachment.filename}/>
-                </div>
-              ))}
-            </div>
-          )}
-          {created_at && <span className="message__date">
+            {created_at && <span className="message__date">
           <Time date={created_at}/>
         </span>}
 
-        </div>
+          </div>
+        </Popover>
       </div>
     </div>
   )
@@ -126,7 +210,6 @@ Message.propTypes = {
   user: PropTypes.object,
   attachments: PropTypes.array,
   isTyping: PropTypes.bool,
-  isMe: PropTypes.bool,
   isReaded: PropTypes.bool,
   audio: PropTypes.string,
 }

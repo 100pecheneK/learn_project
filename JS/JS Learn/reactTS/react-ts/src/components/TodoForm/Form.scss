@@ -1,0 +1,23 @@
+.form {
+  margin-top: 1em;
+  display: flex;
+  align-items: flex-end;
+
+  .input-field {
+    input, label {
+      display: block;
+    }
+
+    label {
+      margin-bottom: 0.5em;
+    }
+  }
+
+  button {
+    cursor: pointer;
+    margin-left: 1em;
+    height: 100%;
+    outline: none;
+    border-radius: 5px;
+  }
+}

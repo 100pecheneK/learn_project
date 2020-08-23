@@ -26,6 +26,7 @@
   }
 
   &__bubble {
+    cursor: pointer;
     background-color: $blue;
     box-shadow: 0 5px 5px rgba(54, 116, 255, 0.2);
     border-radius: 12px 12px 12px 0;
@@ -41,6 +42,7 @@
   &__text {
     color: #fff;
     line-height: 20px;
+    cursor: auto;
   }
 
   &__attachments {
@@ -48,6 +50,7 @@
 
     &-item {
       img {
+        object-fit: cover;
         width: 45px;
         height: 45px;
         border-radius: 8px;
@@ -58,13 +61,16 @@
     }
   }
 
-  &__icon--readed {
-    position: absolute;
-    bottom: 1.5em;
-    left: -1.5em;
+  &__icon {
+    &--readed {
 
-    &--no {
-      left: -1.2em;
+      position: absolute;
+      bottom: 1.5em;
+      left: -1.5em;
+
+      &--no {
+        left: -1.2em;
+      }
     }
   }
 
@@ -132,10 +138,8 @@
     }
 
     #{$self}__avatar {
-      img {
-        margin-right: 0;
-        margin-left: 1.2em;
-      }
+      margin-right: 0;
+      margin-left: 1.2em;
     }
 
     #{$self}__content {
@@ -144,6 +148,7 @@
 
     #{$self}__info {
       text-align: right;
+      display: flex;
     }
 
     #{$self}__bubble {
@@ -151,6 +156,7 @@
       border: 1px solid #ececec;
       box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
       border-radius: 12px 12px 0 12px;
+      order: 2;
 
       #{$self}__text {
         color: $black;
