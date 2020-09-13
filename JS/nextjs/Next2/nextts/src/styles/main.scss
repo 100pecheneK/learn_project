@@ -1,0 +1,43 @@
+body {
+  background-color: #fafafa;
+  font-family: 'Roboto', 'sans-serif';
+}
+
+ul, li {
+  list-style-type: none;
+  margin-bottom: 0.2em;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  background-color: #212121;
+  color: #fafafa;
+  text-decoration: none;
+  padding: 0.5em;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  &:hover {
+    background-color: #696969;
+  }
+}
+
+button {
+  background-color: #9E9E9E;
+  cursor: pointer;
+  color: #fafafa;
+  text-decoration: none;
+  padding: 0.5em;
+  display: block;
+  outline: none;
+  border: none;
+
+  &:hover {
+    background-color: #696969;
+  }
+}

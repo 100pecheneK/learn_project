@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f543c6d5-2fb9-4c60-807f-fd015fdb2080" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectId" id="1eqM4i8t9Q1ToYFhoZaULKyFdB7" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.TypeScript" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/lesson2/node_modules/typescript/lib" />
+  </component>
+  <component name="RunManager">
+    <configuration name="compile" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/lesson2/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="compile" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f543c6d5-2fb9-4c60-807f-fd015fdb2080" name="Default Changelist" comment="" />
+      <created>1595044480031</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1595044480031</updated>
+      <workItem from="1595044484657" duration="9952000" />
+      <workItem from="1595085076757" duration="435000" />
+      <workItem from="1595085532828" duration="2868000" />
+      <workItem from="1595133108638" duration="4425000" />
+    </task>
+    <task id="LOCAL-00001" summary="typescript">
+      <created>1595138012130</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1595138012130</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/lesson1/3_emun.js" />
+        <option value="$PROJECT_DIR$/lesson1/4_functions.js" />
+      </list>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="typescript" />
+    <option name="LAST_COMMIT_MESSAGE" value="typescript" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="320" y="70" key="#Plugins" timestamp="1595085086038">
+      <screen x="0" y="0" width="1440" height="844" />
+    </state>
+    <state x="320" y="70" key="#Plugins/0.0.1440.844/1440.-180.1920.1080@0.0.1440.844" timestamp="1595085086038" />
+    <state x="228" y="103" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595133151667">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="228" y="103" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900/1440.-157.1920.1057@0.0.1440.900" timestamp="1595045640807" />
+    <state x="228" y="103" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900/1440.-180.1920.1080@0.0.1440.900" timestamp="1595133151667" />
+    <state x="533" y="173" key="#com.intellij.ide.util.MemberChooser" timestamp="1595070281450">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="533" y="173" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900/1440.-180.1920.1080@0.0.1440.900" timestamp="1595070281450" />
+    <state x="474" y="36" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1595046105255">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="474" y="36" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1440.900/1440.-180.1920.1080@0.0.1440.900" timestamp="1595046105255" />
+    <state x="294" y="0" key="CommitChangelistDialog2" timestamp="1595138011337">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="294" y="0" key="CommitChangelistDialog2/0.0.1440.900/1440.-180.1920.1080@0.0.1440.900" timestamp="1595138011337" />
+    <state width="1440" height="211" key="GridCell.Tab.0.bottom" timestamp="1595138022550">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1440" height="211" key="GridCell.Tab.0.bottom/0.0.1440.844/1440.-180.1920.1080@0.0.1440.844" timestamp="1595088467480" />
+    <state width="1440" height="211" key="GridCell.Tab.0.bottom/0.0.1440.900/1440.-157.1920.1057@0.0.1440.900" timestamp="1595138022550" />
+    <state width="1440" height="211" key="GridCell.Tab.0.bottom/0.0.1440.900/1440.-180.1920.1080@0.0.1440.900" timestamp="1595137530679" />
+    <state width="1440" height="211" key="GridCell.Tab.0.center" timestamp="1595138022548">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1440" height="211" key="GridCell.Tab.0.center/0.0.1440.844/1440.-180.1920.1080@0.0.1440.844" timestamp="1595088467479" />
+    <state width="1440" height="211" key="GridCell.Tab.0.center/0.0.1440.900/1440.-157.1920.1057@0.0.1440.900" timestamp="1595138022548" />
+    <state width="1440" height="211" key="GridCell.Tab.0.center/0.0.1440.900/1440.-180.1920.1080@0.0.1440.900" timestamp="1595137530677" />
+    <state width="1440" height="211" key="GridCell.Tab.0.left" timestamp="1595138022548">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1440" height="211" key="GridCell.Tab.0.left/0.0.1440.844/1440.-180.1920.1080@0.0.1440.844" timestamp="1595088467478" />
+    <state width="1440" height="211" key="GridCell.Tab.0.left/0.0.1440.900/1440.-157.1920.1057@0.0.1440.900" timestamp="1595138022548" />
+    <state width="1440" height="211" key="GridCell.Tab.0.left/0.0.1440.900/1440.-180.1920.1080@0.0.1440.900" timestamp="1595137530676" />
+    <state width="1440" height="211" key="GridCell.Tab.0.right" timestamp="1595138022549">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1440" height="211" key="GridCell.Tab.0.right/0.0.1440.844/1440.-180.1920.1080@0.0.1440.844" timestamp="1595088467479" />
+    <state width="1440" height="211" key="GridCell.Tab.0.right/0.0.1440.900/1440.-157.1920.1057@0.0.1440.900" timestamp="1595138022549" />
+    <state width="1440" height="211" key="GridCell.Tab.0.right/0.0.1440.900/1440.-180.1920.1080@0.0.1440.900" timestamp="1595137530678" />
+    <state x="241" y="74" width="1615" height="907" key="SettingsEditor" timestamp="1595087069299">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="1571" y="-122" width="1615" height="907" key="SettingsEditor/0.0.1440.844/1440.-180.1920.1080@0.0.1440.844" timestamp="1595085665223" />
+    <state x="241" y="74" width="1080" height="722" key="SettingsEditor/0.0.1440.900/1440.-157.1920.1057@0.0.1440.900" timestamp="1595087069299" />
+    <state x="0" y="0" width="1440" height="900" key="SettingsEditor/0.0.1440.900/1440.-180.1920.1080@0.0.1440.900" timestamp="1595072259996" />
+    <state x="320" y="186" key="Vcs.Push.Dialog.v2" timestamp="1595138014016">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="320" y="186" key="Vcs.Push.Dialog.v2/0.0.1440.900/1440.-180.1920.1080@0.0.1440.900" timestamp="1595138014016" />
+    <state x="508" y="367" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1595133386800">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="508" y="367" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.900/1440.-180.1920.1080@0.0.1440.900" timestamp="1595133386800" />
+    <state x="385" y="210" key="run.anything.popup" timestamp="1595133398381">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="385" y="210" key="run.anything.popup/0.0.1440.900/1440.-180.1920.1080@0.0.1440.900" timestamp="1595133398381" />
+    <state x="385" y="196" key="search.everywhere.popup" timestamp="1595045066974">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="385" y="196" key="search.everywhere.popup/0.0.1440.900/1440.-180.1920.1080@0.0.1440.900" timestamp="1595045066974" />
+  </component>
+</project>
