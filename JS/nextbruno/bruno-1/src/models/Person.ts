@@ -3,12 +3,17 @@ import mongoose, {Schema, Document} from 'mongoose'
 
 export interface IPerson extends Document {
   name: string,
-  email: string
+  email: string,
+  password: string
 }
 
 export const PersonSchema = new Schema({
   name: String,
-  email: String
+  email: {
+    type: String,
+    unique: true
+  },
+  password: String
 }, {
   timestamps: true
 })

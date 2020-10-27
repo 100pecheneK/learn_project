@@ -1,6 +1,6 @@
 import {NextApiRequest, NextApiResponse} from 'next'
 import {VehicleModel} from '@models'
-import apiRoutesHandler from '@utils/apiRoutesHandler'
+import apiRoutesHandler from '@/src/middlewares/apiRoutesHandler'
 import withDb from '@utils/dbConnect'
 
 

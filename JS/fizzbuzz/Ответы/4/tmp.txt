@@ -1,0 +1,11 @@
+const tagNumRulesCollection = new TagNumRulesCollection([
+  new TagNumRule(
+    new Tag('Четное'),
+    new AndStrategy([
+      new EvenCondition()
+    ])
+  ),
+])
+
+const EvenCondition = require('./Conditions/EvenCondition')
+const OrStrategy = require('./Strategies/OrStrategy')

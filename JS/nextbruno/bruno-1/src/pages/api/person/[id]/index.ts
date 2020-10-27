@@ -1,25 +1,27 @@
 import {NextApiRequest, NextApiResponse} from 'next'
-import FetchData from '@utils/fetchData'
-import {IPerson} from '@models/Person'
-import {API_URL} from '@/config'
+import apiRoutesHandler from '@/src/middlewares/apiRoutesHandler'
+import withDb from '@utils/dbConnect'
+import {PersonModel} from '@models'
 
 
 interface IGetPersonByIdNextApiRequest extends NextApiRequest {
   query: {
     id: string
+  },
+  body: {
+    name: string,
+    email: string,
+    password: string
   }
 }
 
-export default async function getPersonById(req: IGetPersonByIdNextApiRequest, res: NextApiResponse) {
-  if (req.method === 'PUT') {
-    const person = await FetchData.put(
-      `${API_URL}/people/${req.query.id}`,
-      {
-        name: req.body.name,
-        email: req.body.email
-      })
-    return res.json(person)
-  }
-  const person: IPerson = await FetchData.get(`${API_URL}/people/${req.query.id}`)
-  res.json(person)
-}
+export default apiRoutesHandler(
+  withDb({
+    PUT: async (req: IGetPersonByIdNextApiRequest, res: NextApiResponse) => {
+      const {id} = req.query
+      const {name, email, password} = req.body
+      const person = await PersonModel.findByIdAndUpdate()
+      return res.json(person)
+    }
+  })
+)
