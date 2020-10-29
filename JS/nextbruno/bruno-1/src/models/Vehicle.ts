@@ -22,7 +22,8 @@ function createModel<M extends Document>(modelName: string, schema: any) {
   return mongoose.models[modelName] || mongoose.model<M>(modelName, schema)
 }
 
-const VehicleModel =
-  mongoose.models.Vehicle || mongoose.model<IVehicle>('Vehicle', VehicleSchema)
+const VehicleModel = createModel<IVehicle>('Vehicle', VehicleSchema)
+// Old version (need test new)
+// const VehicleModel = mongoose.models.Vehicle || mongoose.model<IVehicle>('Vehicle', VehicleSchema)
 
 export default VehicleModel

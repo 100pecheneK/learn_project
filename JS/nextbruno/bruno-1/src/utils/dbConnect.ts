@@ -1,10 +1,9 @@
 import mongoose from 'mongoose'
-import {RouteHandler} from '@/src/middlewares/apiRoutesHandler'
-import {MONGO_URL} from '@/config'
-
+import { RouteHandler } from '@/src/middlewares/apiRoutesHandler'
+import { MONGO_URL } from '@/config'
 
 const connection: { isConnected: boolean } = {
-  isConnected: false
+  isConnected: false,
 }
 
 const connectDb = async () => {
@@ -22,7 +21,7 @@ const connectDb = async () => {
   }
 }
 
-function withDb(handler: RouteHandler) {
+function withDb(handler: RouteHandler | any) {
   connectDb()
   return handler
 }

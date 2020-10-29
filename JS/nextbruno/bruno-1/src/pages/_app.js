@@ -5,16 +5,7 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import theme from '@utils/theme'
 
 
-export default function MyApp(props) {
-  const {Component, pageProps} = props
-
-  React.useEffect(() => {
-    const jssStyles = document.querySelector('#jss-server-side')
-    if (jssStyles) {
-      jssStyles.parentElement.removeChild(jssStyles)
-    }
-  }, [])
-
+export default function MyApp({Component, pageProps}) {
   return (
     <>
       <Head>

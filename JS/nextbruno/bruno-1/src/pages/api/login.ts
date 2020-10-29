@@ -5,6 +5,7 @@ import {PersonModel} from '@models'
 import {compare} from 'bcrypt'
 import {sign} from 'jsonwebtoken'
 import {SECRET} from '@/config'
+import cookie from 'cookie'
 
 
 interface ILoginNextApiRequest extends NextApiRequest {
@@ -42,6 +43,13 @@ export default apiRoutesHandler(
           id: person.id,
           token
         }
+        res.setHeader('Set-Cookie', cookie.serialize('auth', token, {
+          httpOnly: true,
+          secure: process.env.NODE_ENV !== 'development',
+          sameSite: 'strict',
+          maxAge: 3600,
+          path: '/'
+        }))
         return res.json(responsePersonData)
       } catch (e) {
         if (typeof e === 'number') {
