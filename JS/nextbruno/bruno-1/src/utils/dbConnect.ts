@@ -26,4 +26,9 @@ function withDb(handler: RouteHandler | any) {
   return handler
 }
 
+export function withDbMiddleware(req: any, res: any, next: any) {
+  connectDb()
+  next()
+}
+
 export default withDb

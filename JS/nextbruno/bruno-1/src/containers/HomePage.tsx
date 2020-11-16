@@ -8,6 +8,7 @@ export default function HomePage() {
       <Link href='/people'>
         <a>People</a>
       </Link>
+      {process.env.API_URL}
     </>
   )
 }
