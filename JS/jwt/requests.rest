@@ -1,0 +1,31 @@
+GET http://localhost:3000/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSmVueWEiLCJpYXQiOjE2MDcwNjQ0OTQsImV4cCI6MTYwNzA2NTM5NH0.fWquAJqC0Fq14d_1sB40WYwonxeuSRIFt7k-YuyLtI8
+###
+
+
+POST http://localhost:3000/token
+Content-Type: application/json
+
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSmVueWEiLCJpYXQiOjE2MDcwNjQ0NDl9.yP51vPJKtDlpfPpp0i3sAdt3OgNf1M12uzZp_gRXcF8"
+}
+
+###
+
+
+DELETE http://localhost:3000/logout
+Content-Type: application/json
+
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSmVueWEiLCJpYXQiOjE2MDcwNjQ0NDl9.yP51vPJKtDlpfPpp0i3sAdt3OgNf1M12uzZp_gRXcF8"
+}
+
+
+###
+
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+  "username": "Jenya"
+}
