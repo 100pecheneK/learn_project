@@ -1,10 +1,12 @@
 import { PostType } from './@types'
 import {
   CREATE_POST,
-  FETCH_POSTS,
+  SET_POSTS,
   HIDE_LOADER,
   REQUEST_POSTS,
   SHOW_LOADER,
+  LOAD_MORE_POSTS,
+  ADD_POSTS,
 } from './types'
 
 export const createPost = (post: PostType) => ({
@@ -12,11 +14,15 @@ export const createPost = (post: PostType) => ({
   payload: { ...post },
 })
 
-export const fetchPosts = (posts: PostType[]) => ({
-  type: FETCH_POSTS,
+export const setPosts = (posts: PostType[]) => ({
+  type: SET_POSTS,
   payload: posts,
 })
 export const showLoader = () => ({ type: SHOW_LOADER })
 export const hideLoader = () => ({ type: HIDE_LOADER })
-
 export const requestPosts = () => ({ type: REQUEST_POSTS })
+export const loadMorePosts = () => ({ type: LOAD_MORE_POSTS })
+export const addPosts = (posts: PostType[]) => ({
+  type: ADD_POSTS,
+  payload: posts,
+})

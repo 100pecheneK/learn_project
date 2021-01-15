@@ -1,9 +1,7 @@
-import { InferValueTypes } from '../../@types'
+import { getActionTypes } from '../../@types'
 import * as appActionCreators from '../action-creators'
 
-export type AppActionTypes = ReturnType<
-  InferValueTypes<typeof appActionCreators>
->
+export type AppActionTypes = getActionTypes<typeof appActionCreators>
 
 export enum AlertStatus {
   DANGER = 'danger',

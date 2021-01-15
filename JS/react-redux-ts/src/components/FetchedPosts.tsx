@@ -1,10 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import {
-  postsActionCreators,
-  postsActions,
-  postsSelectors,
-} from '../redux/posts'
+import { postsActionCreators, postsSelectors } from '../redux/posts'
 import { useTypedDispatch } from '../redux/store'
 import Post from './Post'
 
@@ -35,6 +31,12 @@ export default function FetchedPosts() {
       {posts.map(post => (
         <Post key={post.id} post={post} />
       ))}
+      <button
+        onClick={() => dispatch(postsActionCreators.loadMorePosts())}
+        className='btn btn-primary'
+      >
+        Load more
+      </button>
     </>
   )
 }
