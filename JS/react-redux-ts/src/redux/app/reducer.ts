@@ -1,9 +1,9 @@
 import { AppActionTypes, AppInitialStateType } from './@types'
 import {
+  ADD_ALERT,
   HIDE_ALERT,
   HIDE_LAST_ALERT,
   HIDE_LOADER,
-  SHOW_ALERT,
   SHOW_LOADER,
 } from './types'
 
@@ -27,7 +27,7 @@ export const reducer = (
         ...state,
         loading: false,
       }
-    case SHOW_ALERT:
+    case ADD_ALERT:
       return {
         ...state,
         alert: [action.payload, ...state.alert],

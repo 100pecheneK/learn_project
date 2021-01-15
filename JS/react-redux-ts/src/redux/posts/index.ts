@@ -1,6 +1,5 @@
-import * as postsActionCreators from './action-creators'
-import * as postsActions from './actions'
+import * as postsActionCreators from './actionCreators'
 import { reducer as postsReducer } from './reducer'
 import * as postsSelectors from './selectors'
 
-export { postsReducer, postsActions, postsActionCreators, postsSelectors }
+export { postsReducer, postsActionCreators, postsSelectors }

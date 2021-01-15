@@ -1,6 +1,6 @@
 import { Middleware, Dispatch, AnyAction, MiddlewareAPI } from 'redux'
 import { AppDispatch } from './@types'
-import { appActions } from './app'
+import { appActionCreators, appActions } from './app'
 import { AlertStatus } from './app/@types'
 import { CREATE_POST } from './posts/types'
 
@@ -16,7 +16,7 @@ export function forbiddenWords() {
       )
       if (found.length) {
         return api.dispatch(
-          appActions.addAlert({
+          appActionCreators.showAlert({
             status: AlertStatus.DANGER,
             message:
               'Don`t use ' + found.join(', ').replace(/(,) (\S*)$/, ' and $2'),

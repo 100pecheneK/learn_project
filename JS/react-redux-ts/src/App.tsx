@@ -21,7 +21,7 @@ function App() {
           </div>
           <div className='col'>
             <h2>Fetched Posts</h2>
-            <FetchedPosts />
+            <FetchedPosts/>
           </div>
         </div>
       </div>

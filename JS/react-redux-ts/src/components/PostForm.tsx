@@ -1,7 +1,7 @@
 import React from 'react'
-import { appActions } from '../redux/app'
+import { appActionCreators, appActions } from '../redux/app'
 import { AlertStatus } from '../redux/app/@types'
-import { postsActionCreators, postsActions } from '../redux/posts'
+import { postsActionCreators } from '../redux/posts'
 import { useTypedDispatch } from '../redux/store'
 
 const initialFormValues = { title: '' }
@@ -14,7 +14,7 @@ export default function PostForm() {
     e.preventDefault()
     if (!formValues.title.trim()) {
       dispatch(
-        appActions.addAlert({
+        appActionCreators.showAlert({
           status: AlertStatus.DANGER,
           message: 'Post title required',
         })
