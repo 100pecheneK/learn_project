@@ -12,7 +12,7 @@ import {
   RootState,
 } from './@types'
 import { forbiddenWords } from './middleware'
-import { sagaWatcher } from './sagas'
+import { rootSaga } from './saga'
 
 export const rootReducer = combineReducers({ postsReducer, appReducer })
 
@@ -28,8 +28,6 @@ export const store = createStore(
     )
   )
 )
-saga.run(sagaWatcher)
+saga.run(rootSaga)
 
 export const useTypedDispatch = () => useDispatch<AppDispatch>()
-// TODO: Придумать как это использовать, если у меня есть функции селекторов
-export const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector

@@ -1,5 +1,5 @@
-import { InferValueTypes } from '../../@types'
-import * as postsActionCreators from '../action-creators'
+import { getActionTypes, InferValueTypes } from '../../@types'
+import * as postsActionCreators from '../actionCreators'
 
 export type PostType = {
   id?: string
@@ -11,6 +11,7 @@ export type PostsInitialStateType = {
   isLoading: boolean
 }
 
-export type PostsActionTypes = ReturnType<
-  InferValueTypes<typeof postsActionCreators>
->
+export type PostsActionTypes = getActionTypes<typeof postsActionCreators>
+// export type PostsActionTypes = ReturnType<
+//   InferValueTypes<typeof postsActionCreators>
+// >
