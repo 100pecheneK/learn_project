@@ -14,7 +14,7 @@
     "dotenv": "^8.2.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.5",
-    "next": "9.5.3",
+    "next": "9.5.4",
     "next-connect": "^0.9.1",
     "nprogress": "^0.2.0",
     "react": "16.13.1",
