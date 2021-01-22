@@ -5,3 +5,6 @@ export const HIDE_LOADER = 'posts/HIDE_LOADER' as const
 export const REQUEST_POSTS = 'posts/REQUEST_POSTS' as const
 export const LOAD_MORE_POSTS = 'posts/LOAD_MORE_POSTS' as const
 export const ADD_POSTS = 'posts/ADD_POSTS' as const
+export const FETCH_POST = 'posts/FETCH_POST' as const
+export const SET_POST = 'posts/SET_POST' as const
+export const POST_LOAD_FAIL = 'posts/POST_LOAD_FAIL' as const

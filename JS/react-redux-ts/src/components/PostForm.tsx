@@ -1,10 +1,10 @@
 import React from 'react'
-import { appActionCreators, appActions } from '../redux/app'
+import { appActionCreators } from '../redux/app'
 import { AlertStatus } from '../redux/app/@types'
 import { postsActionCreators } from '../redux/posts'
 import { useTypedDispatch } from '../redux/store'
 
-const initialFormValues = { title: '' }
+const initialFormValues = { title: '', body: '' }
 
 export default function PostForm() {
   const dispatch = useTypedDispatch()
@@ -17,6 +17,15 @@ export default function PostForm() {
         appActionCreators.showAlert({
           status: AlertStatus.DANGER,
           message: 'Post title required',
+        })
+      )
+      return
+    }
+    if (!formValues.body.trim()) {
+      dispatch(
+        appActionCreators.showAlert({
+          status: AlertStatus.DANGER,
+          message: 'Post body required',
         })
       )
       return
@@ -48,6 +57,16 @@ export default function PostForm() {
           id='title'
           value={formValues.title}
           name='title'
+          onChange={onInputChange}
+          autoComplete='off'
+        />
+        <label htmlFor='body'>Post body</label>
+        <input
+          type='text'
+          className='form-control'
+          id='body'
+          value={formValues.body}
+          name='body'
           onChange={onInputChange}
           autoComplete='off'
         />

@@ -1,6 +1,6 @@
 import { Middleware, Dispatch, AnyAction, MiddlewareAPI } from 'redux'
 import { AppDispatch } from './@types'
-import { appActionCreators, appActions } from './app'
+import { appActionCreators } from './app'
 import { AlertStatus } from './app/@types'
 import { CREATE_POST } from './posts/types'
 

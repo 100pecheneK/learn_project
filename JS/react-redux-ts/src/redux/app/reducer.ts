@@ -2,7 +2,6 @@ import { AppActionTypes, AppInitialStateType } from './@types'
 import {
   ADD_ALERT,
   HIDE_ALERT,
-  HIDE_LAST_ALERT,
   HIDE_LOADER,
   SHOW_LOADER,
 } from './types'
@@ -36,13 +35,6 @@ export const reducer = (
       return {
         ...state,
         alert: state.alert.filter(alert => alert.id !== action.payload),
-      }
-    case HIDE_LAST_ALERT:
-      const newAlert = [...state.alert]
-      newAlert.splice(-1)
-      return {
-        ...state,
-        alert: newAlert,
       }
     default:
       return state

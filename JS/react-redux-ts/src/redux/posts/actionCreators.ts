@@ -7,6 +7,9 @@ import {
   SHOW_LOADER,
   LOAD_MORE_POSTS,
   ADD_POSTS,
+  FETCH_POST,
+  SET_POST,
+  POST_LOAD_FAIL,
 } from './types'
 
 export const createPost = (post: PostType) => ({
@@ -26,3 +29,7 @@ export const addPosts = (posts: PostType[]) => ({
   type: ADD_POSTS,
   payload: posts,
 })
+
+export const fetchPost = (id: string) => ({ type: FETCH_POST, payload: id })
+export const postLoadFail = () => ({ type: POST_LOAD_FAIL })
+export const setPost = (post: PostType) => ({ type: SET_POST, payload: post })

@@ -1,6 +1,7 @@
 import { RootState } from '../@types'
 
-export const posts = (state: RootState) => state.postsReducer.posts
-export const fetchedPosts = (state: RootState) =>
-  state.postsReducer.fetchedPosts
-export const isLoading = (state: RootState) => state.postsReducer.isLoading
+export const postState = (state: RootState) => state.postsReducer
+export const posts = (state: RootState) => postState(state).posts
+export const fetchedPosts = (state: RootState) => postState(state).fetchedPosts
+export const isLoading = (state: RootState) => postState(state).isLoading
+export const post = (state: RootState) => postState(state).post

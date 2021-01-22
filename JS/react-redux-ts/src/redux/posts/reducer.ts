@@ -4,8 +4,9 @@ import {
   SET_POSTS,
   HIDE_LOADER,
   SHOW_LOADER,
-  LOAD_MORE_POSTS,
   ADD_POSTS,
+  SET_POST,
+  POST_LOAD_FAIL,
 } from './types'
 import produce, { Draft } from 'immer'
 
@@ -13,6 +14,7 @@ const initialState: PostsInitialStateType = {
   posts: [],
   fetchedPosts: [],
   isLoading: false,
+  post: undefined,
 }
 
 export const reducer = produce(
@@ -32,6 +34,12 @@ export const reducer = produce(
         break
       case HIDE_LOADER:
         draft.isLoading = false
+        break
+      case SET_POST:
+        draft.post = action.payload
+        break
+      case POST_LOAD_FAIL:
+        draft.post = undefined
         break
     }
   },

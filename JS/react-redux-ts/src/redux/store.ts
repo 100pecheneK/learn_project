@@ -1,16 +1,11 @@
-import { useSelector, TypedUseSelectorHook, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { applyMiddleware, combineReducers, createStore } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
 import createSagaMiddleware from 'redux-saga'
 import { postsReducer } from './posts'
-import { appActions, appReducer } from './app'
-import {
-  AppDispatch,
-  DispatchFunctionType,
-  InitialStateType,
-  RootState,
-} from './@types'
+import { appReducer } from './app'
+import { AppDispatch, DispatchFunctionType, InitialStateType } from './@types'
 import { forbiddenWords } from './middleware'
 import { rootSaga } from './saga'
 
