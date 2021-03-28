@@ -1,0 +1,32 @@
+@import 'global';
+
+body {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+a {
+  text-decoration: none;
+  font-size: 3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  span {
+    transition: ease-in-out 0.3s;
+  }
+  &:hover span {
+    transform: scale(1.2);
+    font-weight: bold;
+  }
+}
+
+.link_1 {
+  color: #212121;
+  background-color: lightsalmon;
+}
+
+.link_2 {
+  color: lightsalmon;
+  background-color: #212121;
+}

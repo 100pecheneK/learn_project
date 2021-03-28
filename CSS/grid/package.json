@@ -1,0 +1,14 @@
+{
+  "name": "grid",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "snowpack": "^3.1.2",
+    "@snowpack/plugin-sass": "^1.4.0"
+  },
+  "scripts": {
+    "start": "snowpack dev",
+    "build": "snowpack build"
+  }
+}

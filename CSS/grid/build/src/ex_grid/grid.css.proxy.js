@@ -1,0 +1,10 @@
+// [snowpack] add styles to the page (skip if no document exists)
+if (typeof document !== 'undefined') {
+  const code = "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n\nbody {\n  background-color: #212121;\n}\n\nmain section:not(:first-child) {\n  margin-top: 3em;\n}\n\n.box1 {\n  background-color: lightcoral;\n}\n\n.box2 {\n  background-color: lightblue;\n}\n\n.box3 {\n  background-color: lightgreen;\n}\n\n/** Example 1 */\n.ex1 {\n  height: 100vh;\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  grid-template-rows: 1fr 1fr;\n}\n.ex1__box3 {\n  /* This: */\n  grid-column-start: 1;\n  grid-column-end: 3;\n  /* Equals to this: */\n  grid-column: 1/3;\n}\n\n/** Example 2 */\n.ex2 {\n  height: 100vh;\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  grid-template-rows: 1fr 1fr;\n}\n.ex2__box1 {\n  grid-column: 1/2;\n  grid-row: 1/2;\n}\n.ex2__box2 {\n  grid-row: 1/3;\n}\n\n/** Example 3  */\n.ex3 {\n  height: 100vh;\n  display: grid;\n  grid-template-columns: 1fr 1fr 1fr;\n  grid-template-rows: 1fr 1fr 1fr;\n}\n.ex3__box1 {\n  grid-column: 1/2;\n  grid-row: 1/3;\n}\n.ex3__box2 {\n  grid-row: 2/4;\n}\n.ex3__box3 {\n  grid-column: 2/4;\n}\n\n/** Example 4  */\n.ex4 {\n  height: 100vh;\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  grid-template-rows: 1fr 1fr;\n  grid-template-areas: \"box1 box2\" \"box3 box3\";\n}\n.ex4__box1 {\n  grid-area: box1;\n}\n.ex4__box2 {\n  grid-area: box2;\n}\n.ex4__box3 {\n  grid-area: box3;\n}\n\n/** Example 5  */\n.ex5 {\n  height: 100vh;\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  grid-template-rows: 1fr 1fr;\n  grid-template-areas: \"box1 box2\" \"box3 box3\";\n}\n.ex5__box1 {\n  grid-area: box1;\n  align-self: end;\n  justify-self: end;\n}\n.ex5__box2 {\n  grid-area: box2;\n  align-self: start;\n  justify-self: start;\n}\n.ex5__box3 {\n  grid-area: box3;\n  align-self: center;\n  justify-self: center;\n}";
+
+  const styleEl = document.createElement("style");
+  const codeEl = document.createTextNode(code);
+  styleEl.type = 'text/css';
+  styleEl.appendChild(codeEl);
+  document.head.appendChild(styleEl);
+}
